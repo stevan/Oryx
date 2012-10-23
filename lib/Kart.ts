@@ -16,24 +16,58 @@ module Kart {
         toString () { return this.message }
     }
 
+    export module Client {
+
+        export class Observable {
+            private callbacks = {};
+
+            bind ( event_name : string, callback : Function ) {
+                if ( this.callbacks[ event_name ] == undefined ) {
+                    this.callbacks[ event_name ] = [];
+                }
+                this.callbacks[ event_name ].push( callback );
+                return this;
+            }
+
+            unbind ( event_name : string, callback : Function ) {
+                if ( this.callbacks[ event_name ] == undefined ) return;
+                var callbacks = this.callbacks[ event_name ];
+                for (var i = 0; i < callbacks.length; i++) {
+                    if (callbacks[i] === callback) {
+                        Util.Array.remove( callbacks, i );
+                    }
+                }
+                return this;
+            }
+
+            trigger ( event_name : string ) {
+                if ( this.callbacks[ event_name ] != undefined ) {
+                    var callbacks = this.callbacks[ event_name ];
+                    for ( var i = 0; i < callbacks.length; i++ ) {
+                        callbacks[i].apply( this, Array.prototype.slice.call( arguments, 1 ) );
+                    }
+                }
+                return this;
+            }
+
+        }
+
+    }
+
+    module Util {
+        export module Array {
+            export function remove ( array : Array, from : number, to? : number ) {
+                var rest = array.slice((to || from) + 1 || array.length);
+                array.length = from < 0 ? array.length + from : from;
+                return array.push.apply(array, rest);
+            }
+        }
+    }
+
 }
 
 
 /*
-
-Jackalope.Client.Error = function (msg, reason) {
-    this.name    = "Jackalope Error";
-    this.message = msg;
-    this.reason  = reason || msg;
-}
-
-Jackalope.Client.Error.prototype = {
-    toString : function () { return this.message }
-};
-
-// ----------------------------------------------------------------------------
-// Jackalope Client Observer Base class
-// ----------------------------------------------------------------------------
 
 Jackalope.Client.Observable = function () {}
 
