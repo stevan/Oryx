@@ -1,0 +1,3 @@
+lib/*.js
+shared/*.js
+t/*.js
