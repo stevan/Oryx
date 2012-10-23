@@ -16,7 +16,7 @@ module Kart {
         toString () { return this.message }
     }
 
-    export module Client {
+    export module Core {
 
         export class Observable {
             private callbacks = {};

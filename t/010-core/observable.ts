@@ -1,7 +1,7 @@
 class KartObservableTests {
 
     checkSimpleObservable ( c: tsUnit.TestContext ) {
-        var x = new Kart.Client.Observable ();
+        var x = new Kart.Core.Observable ();
 
         var test = 0;
         var test_event = function () { test++ };
