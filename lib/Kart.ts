@@ -18,10 +18,14 @@ module Kart {
 
     export module Core {
 
+        interface Callback {
+            (...args: any[]): void;
+        }
+
         export class Observable {
             private callbacks = {};
 
-            bind ( event_name : string, callback : Function ) {
+            bind ( event_name : string, callback : Callback ): Observable {
                 if ( this.callbacks[ event_name ] == undefined ) {
                     this.callbacks[ event_name ] = [];
                 }
@@ -29,7 +33,7 @@ module Kart {
                 return this;
             }
 
-            unbind ( event_name : string, callback : Function ) {
+            unbind ( event_name : string, callback : Callback ): Observable {
                 if ( this.callbacks[ event_name ] == undefined ) return;
                 var callbacks = this.callbacks[ event_name ];
                 for (var i = 0; i < callbacks.length; i++) {
@@ -40,11 +44,11 @@ module Kart {
                 return this;
             }
 
-            trigger ( event_name : string ) {
+            trigger ( event_name : string, ...args: any[] ): Observable {
                 if ( this.callbacks[ event_name ] != undefined ) {
                     var callbacks = this.callbacks[ event_name ];
                     for ( var i = 0; i < callbacks.length; i++ ) {
-                        callbacks[i].apply( this, Array.prototype.slice.call( arguments, 1 ) );
+                        callbacks[i].apply( this, args );
                     }
                 }
                 return this;
@@ -68,42 +72,6 @@ module Kart {
 
 
 /*
-
-Jackalope.Client.Observable = function () {}
-
-Jackalope.Client.Observable.prototype = {
-    // event binding ...
-    "bind" : function( event_name, callback ) {
-        if ( this._callbacks == undefined ) this._callbacks = {};
-        if ( this._callbacks[ event_name ] == undefined ) {
-            this._callbacks[ event_name ] = [];
-        }
-        this._callbacks[ event_name ].push( callback );
-        return this;
-    },
-    "unbind" : function( event_name, callback ) {
-        if ( this._callbacks               == undefined ) return;
-        if ( this._callbacks[ event_name ] == undefined ) return;
-        var callbacks = this._callbacks[ event_name ];
-        for (var i = 0; i < callbacks.length; i++) {
-            if (callbacks[i] === callback) {
-                Jackalope.Util.Array.remove( callbacks, i );
-            }
-        }
-        return this;
-    },
-    // event triggering
-    "trigger" : function( event_name ) {
-        if ( this._callbacks == undefined ) this._callbacks = {};
-        if ( this._callbacks[ event_name ] != undefined ) {
-            var callbacks = this._callbacks[ event_name ];
-            for ( var i = 0; i < callbacks.length; i++ ) {
-                callbacks[i].apply( this, Array.prototype.slice.call( arguments, 1 ) );
-            }
-        }
-        return this;
-    }
-};
 
 // ----------------------------------------------------------------------------
 // Jackalope Client Traverser Base class
