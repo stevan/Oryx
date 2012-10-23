@@ -120,6 +120,64 @@ module Kart {
                 }
             }
         }
+    }
+
+    export module Binding {
+        export class Action {
+
+            private $element : () => JQuery;
+            private _element_event ;
+
+            constructor (
+                public element        : JQuery,
+                public event_type     : string,
+                public target?        : any,
+                public target_action? : string
+            ) {
+                var self = this;
+                this.$element       = function () { return jQuery( self.element ) };
+                this._element_event = function (e) { self.call_target_action( e ) };
+                this.setup();
+            }
+
+            setup (): void {
+                if ( this.target == undefined ) return;
+                this.register_element_event();
+            }
+
+            set_target ( target ): void {
+                this.clear_target();
+                this.target = target;
+                this.setup();
+            }
+
+            set_target_data ( target_data ): void {
+                this.clear_target();
+                this.target = target_data.target;
+                if ( target_data.action != undefined ) {
+                    this.target_action = target_data.action;
+                }
+                this.setup();
+            }
+
+            clear_target (): void {
+                this.unregister_element_event();
+                this.target = undefined;
+            }
+
+            register_element_event (): void {
+                this.$element().bind( this.event_type, this._element_event );
+            }
+
+            unregister_element_event (): void {
+                this.$element().unbind( this.event_type, this._element_event );
+            }
+
+            call_target_action (...args: any[]): void {
+                this.target[this.target_action].apply( this.target, args );
+            }
+
+        }
 
     }
 
