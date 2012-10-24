@@ -1,9 +1,6 @@
 class KartErrorTests {
-    simplest_err = new Kart.Error("hello");
-    simple_err   = new Kart.Error("hello", "I wanted to say hi");
-
     checkSimplestError ( c: tsUnit.TestContext ) {
-        var err    = this.simplest_err;
+        var err    = new Kart.Error("hello");
         var result = err.toString();
         c.areIdentical("hello", result);
         c.areIdentical("Kart Error", err.name);
@@ -12,7 +9,7 @@ class KartErrorTests {
     }
 
     checkSimpleError ( c: tsUnit.TestContext ) {
-        var err    = this.simple_err;
+        var err    = new Kart.Error("hello", "I wanted to say hi");
         var result = err.toString();
         c.areIdentical("hello", result);
         c.areIdentical("Kart Error", err.name);
