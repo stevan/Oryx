@@ -123,21 +123,32 @@ module Kart {
     }
 
     export module Binding {
+
         export class Action {
 
-            private $element : () => JQuery;
-            private _element_event ;
+            public element       : JQuery;
+            public event_type    : string;
+            public target        : Object;
+            public target_action : string;
+            public element_event : ( e : JQueryEventObject ) => void;
 
-            constructor (
-                public element        : JQuery,
-                public event_type     : string,
-                public target?        : any,
-                public target_action? : string
-            ) {
-                var self = this;
-                this.$element       = function () { return jQuery( self.element ) };
-                this._element_event = function (e) { self.call_target_action( e ) };
+            constructor ( opts : {
+                element        : JQuery;
+                event_type     : string;
+                target?        : Object;
+                target_action? : string;
+            } ) {
+                this.element       = opts.element;
+                this.event_type    = opts.event_type;
+                this.target        = opts.target;
+                this.target_action = opts.target_action;
+                this.element_event = ( e ) => { this.call_target_action( e ) };
+
                 this.setup();
+            }
+
+            $element (): JQuery {
+                return jQuery( this.element )
             }
 
             setup (): void {
@@ -166,15 +177,18 @@ module Kart {
             }
 
             register_element_event (): void {
-                this.$element().bind( this.event_type, this._element_event );
+                this.$element().bind( this.event_type, this.element_event );
             }
 
             unregister_element_event (): void {
-                this.$element().unbind( this.event_type, this._element_event );
+                this.$element().unbind( this.event_type, this.element_event );
             }
 
-            call_target_action (...args: any[]): void {
-                this.target[this.target_action].apply( this.target, args );
+            call_target_action ( e : JQueryEventObject ): void {
+                // XXX - maybe this should throw an error??
+                if ( this.target                     == undefined ) return;
+                if ( this.target[this.target_action] == undefined ) return;
+                this.target[this.target_action].apply( this.target, [ e ] );
             }
 
         }
