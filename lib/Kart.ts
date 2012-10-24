@@ -23,7 +23,7 @@ module Kart {
         }
 
         export interface ITraversable {
-            get ( path : string ): any;
+            get ( path    : string ): any;
             set ( updates : Object ): ITraversable;
         }
 
