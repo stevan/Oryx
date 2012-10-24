@@ -352,7 +352,12 @@ module Kart {
             serialize ( x : Object ): string;
         }
 
-        export class Resource extends Core.Observable implements Binding.IOutletTarget {
+        export interface ISerializable {
+            pack (): Object;
+            serialize ( serializer : ISerializer ): string;
+        }
+
+        export class Resource extends Core.Observable implements Binding.IOutletTarget, ISerializable {
 
             constructor ( public body : Object ) { super() }
 
