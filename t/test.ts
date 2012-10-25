@@ -1,6 +1,5 @@
-/// <reference path="../shared/jquery.d.ts" />
-/// <reference path="../shared/jquery.js" />
 /// <reference path="../shared/tsUnit.ts" />
+
 /// <reference path="../lib/Kart.ts" />
 
 /// <reference path="010-core/error.ts" />
