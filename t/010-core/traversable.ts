@@ -1,18 +1,14 @@
-class KartTraversableTests {
+test( "Kart.Core.Traversable - basic", () => {
 
-    public t = Kart.Core.Traversable;
-    public p = {};
+    var t = Kart.Core.Traversable;
+    var p = {};
 
-    checkSimpleTraversable ( c: tsUnit.TestContext ) {
-        this.t.traverse_path_and_set( 'x', this.p, 1 );
-        c.areIdentical( this.p['x'], 1 );
-        c.areIdentical( this.t.traverse_path_and_get( 'x', this.p ), 1 );
-    }
+    t.traverse_path_and_set( 'x', p, 1 );
+    equal( p['x'], 1, '... got the expected value (introspecting the object directly)' );
+    equal( t.traverse_path_and_get( 'x', p ), 1, '... got the expected value (introspecting the object via traverable)' );
 
-    checkDeepTraversable ( c: tsUnit.TestContext ) {
-        this.t.traverse_path_and_set( 'y.x', this.p, "HELLO" );
-        c.areIdentical( this.p['y']['x'], "HELLO" );
-        c.areIdentical( this.t.traverse_path_and_get( 'y.x', this.p ), "HELLO" );
-    }
+    t.traverse_path_and_set( 'y.x', p, "HELLO" );
+    equal( p['y']['x'], "HELLO", '... got the expected value (introspecting the object directly)' );
+    equal( t.traverse_path_and_get( 'y.x', p ), "HELLO", '... got the expected value (introspecting the object via traverable)' );
 
-}
+});

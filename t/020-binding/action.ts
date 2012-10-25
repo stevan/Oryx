@@ -1,52 +1,48 @@
-class KartBindingActionTests {
+test("Kart.Binding.Action - basic", () => {
+    var object = {
+        counter      : 0,
+        test_counter : function () { this.counter++ }
+    };
 
-    checkSimpleBindingAction1 ( c: tsUnit.TestContext ) {
-        var object = {
-            counter      : 0,
-            test_counter : function () { this.counter++ }
-        };
+    var a = new Kart.Binding.Action ({
+        element       : $('<input type="button" />'),
+        event_type    : 'click',
+        target        : object,
+        target_action : 'test_counter'
+    });
 
-        var a = new Kart.Binding.Action ({
-            element       : $('<input type="button" />'),
-            event_type    : 'click',
-            target        : object,
-            target_action : 'test_counter'
-        });
+    a.element.click();
+    equal( object.counter, 1, '... counter incremented correctly' );
 
-        a.element.click();
-        c.areIdentical( object.counter, 1 );
+    a.element.click();
+    equal( object.counter, 2, '... counter incremented correctly (again)' );
+});
 
-        a.element.click();
-        c.areIdentical( object.counter, 2 );
-    }
+test("Kart.Binding.Outlet - clearing and setting targets", () => {
+    var object = {
+        counter      : 0,
+        test_counter : function () { this.counter++ }
+    };
 
-    checkSimpleBindingAction2 ( c: tsUnit.TestContext ) {
-        var object = {
-            counter      : 0,
-            test_counter : function () { this.counter++ }
-        };
+    var a = new Kart.Binding.Action ({
+        element       : $('<input type="button" />'),
+        event_type    : 'click',
+        target_action : 'test_counter'
+    });
 
-        var a = new Kart.Binding.Action ({
-            element       : $('<input type="button" />'),
-            event_type    : 'click',
-            target_action : 'test_counter'
-        });
+    equal( object.counter, 0, '... initial counter value is good' );
+    a.element.click();
+    equal( object.counter, 0, '... counter did not increment because target it not bound' );
 
-        c.areIdentical( object.counter, 0 );
-        a.element.click();
-        c.areIdentical( object.counter, 0 );
+    a.set_target( object );
+    a.element.click();
+    equal( object.counter, 1, '... counter incremented correctly' );
 
-        a.set_target( object );
-        a.element.click();
-        c.areIdentical( object.counter, 1 );
+    a.clear_target();
+    a.element.click();
+    equal( object.counter, 1, '... counter did not incremented because target was cleared' );
 
-        a.clear_target();
-        a.element.click();
-        c.areIdentical( object.counter, 1 );
-
-        a.set_target( object );
-        a.element.click();
-        c.areIdentical( object.counter, 2 );
-    }
-
-}
+    a.set_target( object );
+    a.element.click();
+    equal( object.counter, 2, '... counter incremented correctly (target re-bound)' );
+})
