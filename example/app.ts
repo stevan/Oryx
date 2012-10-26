@@ -59,7 +59,7 @@ class Example {
         var p = this.current_person;
         this.persons.push( p );
         this.initialize_new_resource();
-        $('#output').append( JSON.stringify( p.pack() ) );
+        $('#output').append( '<div>' + JSON.stringify( p.pack() ) + '</div>' );
         console.log( this.persons );
     }
 
