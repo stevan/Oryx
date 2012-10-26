@@ -45,4 +45,27 @@ test("Kart.Binding.Outlet - clearing and setting targets", () => {
     a.set_target( object );
     a.element.click();
     equal( object.counter, 2, '... counter incremented correctly (target re-bound)' );
-})
+});
+
+class Counter {
+    counter = 0;
+    test_counter () { this.counter++ }
+}
+
+test("Kart.Binding.Action - with object", () => {
+
+    var object = new Counter ();
+
+    var a = new Kart.Binding.Action ({
+        element       : $('<input type="button" />'),
+        event_type    : 'click',
+        target        : object,
+        target_action : 'test_counter'
+    });
+
+    a.element.click();
+    equal( object.counter, 1, '... counter incremented correctly' );
+
+    a.element.click();
+    equal( object.counter, 2, '... counter incremented correctly (again)' );
+});
