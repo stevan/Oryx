@@ -56,7 +56,7 @@ interface LifecycleObject {
 
 interface QUnitAssert {
 	/* ASSERT */
-	deepEqual(actual: Object, expected: Object, message: string);
+	deepEqual(actual: any, expected: any, message: string);
 	equal(actual: Object, expected: Object, message: string);
 	notDeepEqual(actual: Object, expected: Object, message: string);
 	notEqual(actual: Object, expected: Object, message: string);
@@ -94,7 +94,7 @@ interface QUnitStatic extends QUnitAssert{
 }
 
 /* ASSERT */
-declare var deepEqual: (actual: Object, expected: Object, message: string) => any;
+declare var deepEqual: (actual: any, expected: any, message: string) => any;
 declare var equal: (actual: Object, expected: Object, message: string) => any;
 declare var notDeepEqual: (actual: Object, expected: Object, message: string) => any;
 declare var notEqual: (actual: Object, expected: Object, message: string) => any;
