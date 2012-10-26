@@ -15,3 +15,7 @@
 
 /// <reference path="030-model/resource.ts" />
 
+/// <reference path="040-UI/checkbox.ts" />
+/// <reference path="040-UI/radio-group.ts" />
+/// <reference path="040-UI/checkbox-group.ts" />
+/// <reference path="040-UI/label.ts" />

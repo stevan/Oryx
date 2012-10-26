@@ -16,6 +16,8 @@
 /// <reference path="../lib/Kart/Model.ts" />
 /// <reference path="../lib/Kart/Model/Resource.ts" />
 
+/// <reference path="../lib/Kart/UI.ts" />
+
 module Kart {
     export var VERSION   = 0.01;
     export var AUTHORITY = "cpan:STEVAN";
