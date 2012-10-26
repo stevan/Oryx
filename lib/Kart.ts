@@ -17,6 +17,7 @@
 /// <reference path="../lib/Kart/Model/Resource.ts" />
 
 /// <reference path="../lib/Kart/UI.ts" />
+/// <reference path="../lib/Kart/UI/Panel.ts" />
 
 module Kart {
     export var VERSION   = 0.01;
