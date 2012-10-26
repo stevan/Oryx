@@ -20,4 +20,4 @@
 /// <reference path="040-UI/checkbox-group.ts" />
 /// <reference path="040-UI/label.ts" />
 /// <reference path="040-UI/textbox.ts" />
-/// <reference path="040-UI/panel.ts" />
+/// <reference path="040-UI/view.ts" />

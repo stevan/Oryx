@@ -7,7 +7,7 @@ class Example {
     public persons        : Kart.Model.Resource[] = [];
     public current_person : Kart.Model.Resource;
 
-    public panel = new Kart.UI.Panel({
+    public view = new Kart.UI.View({
         outlets : [
             new Kart.UI.Textbox ({
                 element  : $('#first_name'),
@@ -33,13 +33,13 @@ class Example {
     });
 
     constructor() {
-        this.panel.set_responder( this );
+        this.view.set_responder( this );
         this.initialize_new_resource();
     }
 
     private initialize_new_resource () {
         this.current_person = new Kart.Model.Resource({});
-        this.panel.set_data_source( this.current_person );
+        this.view.set_data_source( this.current_person );
     }
 
     save_person ( e ) {

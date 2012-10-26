@@ -1,5 +1,5 @@
 
-test("Kart.UI.Panel - basic", () => {
+test("Kart.UI.View - basic", () => {
 
     var save_person_called = 0;
     var cancel_edit_called = 0;
@@ -19,7 +19,7 @@ test("Kart.UI.Panel - basic", () => {
     var $save       = $("<input type='button' />");
     var $cancel     = $("<input type='button' />");
 
-    var panel = new Kart.UI.Panel({
+    var view = new Kart.UI.View({
         data_source : r,
         responder   : object,
         outlets : [
@@ -63,7 +63,7 @@ test("Kart.UI.Panel - basic", () => {
     equal(cancel_edit_called, 1, '... cancel_edit was called');
 });
 
-test("Kart.UI.Panel - basic", () => {
+test("Kart.UI.View - with deferred setup", () => {
 
     var save_person_called = 0;
     var cancel_edit_called = 0;
@@ -83,7 +83,7 @@ test("Kart.UI.Panel - basic", () => {
     var $save       = $("<input type='button' />");
     var $cancel     = $("<input type='button' />");
 
-    var panel = new Kart.UI.Panel({
+    var view = new Kart.UI.View({
         outlets : [
             new Kart.UI.Textbox ({
                 element  : $first_name,
@@ -111,7 +111,7 @@ test("Kart.UI.Panel - basic", () => {
     equal($first_name.val(), "", "... got the no value yet");
     equal($last_name.val(), "", "... got the no value yet");
 
-    panel.set_data_source( r );
+    view.set_data_source( r );
 
     equal($first_name.val(), "Stevan", "... got the right value for the DOM after initial binding");
     equal($last_name.val(), "Little", "... got the right value for the DOM after initial binding");
@@ -129,7 +129,7 @@ test("Kart.UI.Panel - basic", () => {
     $cancel.click();
     equal(cancel_edit_called, 0, '... cancel_edit was not called');
 
-    panel.set_responder( object );
+    view.set_responder( object );
 
     $save.click();
     equal(save_person_called, 1, '... save_person was called');
