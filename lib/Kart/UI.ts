@@ -11,6 +11,8 @@ module Kart {
 
         /* Outlets */
 
+        export class Textbox extends Kart.Binding.Outlet {}
+
         export class Label extends Kart.Binding.Outlet {
             register_element_event (): void {}; // it cannot be edited
             get_element_value (): string { return this.$element().html() }
