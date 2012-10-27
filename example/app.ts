@@ -46,7 +46,7 @@ class Example {
         var p = this.current_person;
         this.persons.push( p );
         this.initialize_new_resource();
-        $('#output').append( '<div>' + JSON.stringify( p.pack() ) + '</div>' );
+        $('#output').append( '<div>' + p.serialize( new Kart.Model.Serializer.Json () ) + '</div>' );
         console.log( this.persons );
     }
 

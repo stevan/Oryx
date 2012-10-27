@@ -1,11 +1,12 @@
 module Kart {
     export module Model {
         export interface ISerializer {
-            serialize ( x : Object ): string;
+            serialize   ( x : any    ): string;
+            deserialize ( x : string ): any;
         }
 
         export interface ISerializable {
-            pack (): Object;
+            pack (): any;
             serialize ( serializer : ISerializer ): string;
         }
     }
