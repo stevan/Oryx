@@ -3,7 +3,6 @@
 /// <reference path="../lib/Kart/Error.ts" />
 
 /// <reference path="../lib/Kart/Util.ts" />
-/// <reference path="../lib/Kart/Util/Array.ts" />
 
 /// <reference path="../lib/Kart/Core.ts" />
 /// <reference path="../lib/Kart/Core/Observable.ts" />
