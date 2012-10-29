@@ -1,7 +1,7 @@
 
 module Kart {
     export module UI {
-        export class View extends Kart.Core.Observable {
+        export class Panel extends Kart.Core.Observable {
 
             public actions      : Kart.Binding.Action[] = [];
             public outlets      : Kart.Binding.Outlet[] = [];

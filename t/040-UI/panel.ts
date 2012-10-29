@@ -1,5 +1,5 @@
 
-test("Kart.UI.View - basic", () => {
+test("Kart.UI.Panel - basic", () => {
 
     var save_person_called = 0;
     var cancel_edit_called = 0;
@@ -19,7 +19,7 @@ test("Kart.UI.View - basic", () => {
     var $save       = $("<input type='button' />");
     var $cancel     = $("<input type='button' />");
 
-    var view = new Kart.UI.View({
+    var view = new Kart.UI.Panel({
         data_source : r,
         responder   : object,
         outlets : [
@@ -63,7 +63,7 @@ test("Kart.UI.View - basic", () => {
     equal(cancel_edit_called, 1, '... cancel_edit was called');
 });
 
-test("Kart.UI.View - with deferred setup", () => {
+test("Kart.UI.Panel - with deferred setup", () => {
 
     var save_person_called = 0;
     var cancel_edit_called = 0;
@@ -83,7 +83,7 @@ test("Kart.UI.View - with deferred setup", () => {
     var $save       = $("<input type='button' />");
     var $cancel     = $("<input type='button' />");
 
-    var view = new Kart.UI.View({
+    var view = new Kart.UI.Panel({
         outlets : [
             new Kart.UI.Textbox ({
                 element  : $first_name,

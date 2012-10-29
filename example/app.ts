@@ -22,7 +22,7 @@ class Example {
 
     */
 
-    public view = new Kart.UI.View({
+    public view = new Kart.UI.Panel({
         outlets : [
             new Kart.UI.Textbox ({
                 element  : $('#first_name'),
