@@ -7,6 +7,21 @@ class Example {
     public persons        : Kart.Model.Resource[] = [];
     public current_person : Kart.Model.Resource;
 
+    /*
+
+    public outlets = {
+        '#first_name' => 'first_name',
+        '#last_name'  => { type => 'Textbox',  prop => 'last_name' },
+        '#locked'     => { type => 'Checkbox', prop => 'locked'    }
+    };
+
+    public actions = {
+        '#save'   => { click => 'save_person' },
+        '#cancel' => { click => 'cancel_edit' },
+    };
+
+    */
+
     public view = new Kart.UI.View({
         outlets : [
             new Kart.UI.Textbox ({
