@@ -1,3 +1,10 @@
+/*
+
+TODO:
+- add tests for pack and serialize
+
+*/
+
 test( "Kart.Model.Resource - basic", () => {
 
     var update_event                   = 0;
