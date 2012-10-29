@@ -19,6 +19,7 @@
 
 /// <reference path="../lib/Kart/UI.ts" />
 /// <reference path="../lib/Kart/UI/View.ts" />
+/// <reference path="../lib/Kart/UI/DataTable.ts" />
 
 module Kart {
     export var VERSION   = 0.01;

@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Kart Example</title></head>
-  <body>
-     <div id="body">
-        <form id="person_form">
-            <div><div class="label">First Name</div><input type="text" id="first_name" /></div>
-            <div><div class="label">Last Name</div><input type="text" id="last_name" /></div>
-            <div><input type="button" id="save" value="Save">&nbsp;<input type="button" id="cancel" value="Cancel"></div>
-        </form>
-        <hr/>
-        <div id="output">
+    <head>
+        <title>Kart Example</title>
+        <style type="text/css">
+
+            .label {
+                float : left;
+                width : 100px;
+            }
+
+            .selected {
+                background : #cccccc;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="body">
+            <form id="person_form">
+                <div><div class="label">First Name</div><input type="text" id="first_name" /></div>
+                <div><div class="label">Last Name</div><input type="text" id="last_name" /></div>
+                <div><input type="button" id="save" value="Save">&nbsp;<input type="button" id="cancel" value="Cancel"></div>
+            </form>
+            <hr/>
+            <table border="1" width="500" id="table_view">
+                <thead>
+                    <tr><td>First Name</td><td>Last Name</td></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="first_name"></td><td class="last_name"></td></tr>
+                </tbody>
+            </table>
         </div>
-     </div>
-     <script src="../shared/jquery.js"></script>
-     <script src='app.js'></script>
-  </body>
+        <script src="../shared/jquery.js"></script>
+        <script src='app.js'></script>
+    </body>
 </html>

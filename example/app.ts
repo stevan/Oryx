@@ -4,8 +4,8 @@
 
 class Example {
 
-    public persons        : Kart.Model.Resource[] = [];
     public current_person : Kart.Model.Resource;
+    public persons = new Kart.Model.Collection();
 
     /*
 
@@ -47,8 +47,20 @@ class Example {
         ]
     });
 
+    public table = new Kart.UI.DataTable ({
+        keyboard_nav  : true,
+        select_by_row : true,
+        table_body    : '#table_view tbody',
+        row_selector  : 'tr',
+        binding_spec  : {
+            '.first_name' : 'first_name',
+            '.last_name'  : 'last_name'
+        }
+    });
+
     constructor() {
         this.view.set_responder( this );
+        this.table.set_data_source( this.persons );
         this.initialize_new_resource();
     }
 
@@ -59,9 +71,8 @@ class Example {
 
     save_person ( e ) {
         var p = this.current_person;
-        this.persons.push( p );
+        this.persons.add( p );
         this.initialize_new_resource();
-        $('#output').append( '<div>' + p.serialize( Kart.Util.Serializer.json ) + '</div>' );
         console.log( this.persons );
     }
 
