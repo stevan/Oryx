@@ -15,6 +15,7 @@
 /// <reference path="../lib/Kart/Model.ts" />
 /// <reference path="../lib/Kart/Model/Serializer/Json.ts" />
 /// <reference path="../lib/Kart/Model/Resource.ts" />
+/// <reference path="../lib/Kart/Model/Collection.ts" />
 
 /// <reference path="../lib/Kart/UI.ts" />
 /// <reference path="../lib/Kart/UI/View.ts" />
