@@ -15,13 +15,13 @@ module Kart {
                 data_source? : Kart.Binding.IOutletTarget;
             } ) {
                 super();
-                this.outlets = opts['outlets'];
-                this.actions = opts['actions'];
-                if ( opts['responder'] != undefined ) {
-                    this.set_responder( opts['responder'] );
+                this.outlets = opts.outlets;
+                this.actions = opts.actions;
+                if ( opts.responder != undefined ) {
+                    this.set_responder( opts.responder );
                 }
-                if ( opts['data_source'] != undefined ) {
-                    this.set_data_source( opts['data_source'] );
+                if ( opts.data_source != undefined ) {
+                    this.set_data_source( opts.data_source );
                 }
             }
 

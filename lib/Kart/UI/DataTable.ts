@@ -23,13 +23,13 @@ module Kart {
                 data_source?   : Kart.Model.Collection;
             } ) {
                 super();
-                this.table_body    = opts['table_body'];
-                this.row_selector  = opts['row_selector'];
-                this.binding_spec  = opts['binding_spec'];
-                this.data_source   = opts['data_source'];
+                this.table_body    = opts.table_body;
+                this.row_selector  = opts.row_selector;
+                this.binding_spec  = opts.binding_spec;
+                this.data_source   = opts.data_source;
 
-                if ( opts['keyboard_nav']  ) { this.keyboard_nav  = opts['keyboard_nav']  }
-                if ( opts['select_by_row'] ) { this.select_by_row = opts['select_by_row'] }
+                if ( opts.keyboard_nav  ) { this.keyboard_nav  = opts.keyboard_nav  }
+                if ( opts.select_by_row ) { this.select_by_row = opts.select_by_row }
 
                 if ( this.keyboard_nav == true ) {
                     this.keydown_handler = ( e ) => {
