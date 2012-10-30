@@ -5,12 +5,12 @@ interface IPerson {
 }
 
 class Person extends Kart.Model.Resource {
-    constructor( b : IPerson ) { super( b ) }
+    constructor( id : string, b : IPerson ) { super( id, b ) }
 }
 
 test( "Kart.Model.Resource - resource with interface", () => {
 
-    var p1 = new Person ({
+    var p1 = new Person (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });

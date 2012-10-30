@@ -1,7 +1,7 @@
 
 test("Kart.UI.CheckboxGroup - basic", () => {
 
-    var r = new Kart.Model.Resource ({
+    var r = new Kart.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little",
         "titles"     : ["programmer","manager"]

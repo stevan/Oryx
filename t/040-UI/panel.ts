@@ -9,7 +9,7 @@ test("Kart.UI.Panel - basic", () => {
         cancel_edit : () => { cancel_edit_called++ },
     }
 
-    var r = new Kart.Model.Resource ({
+    var r = new Kart.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });
@@ -73,7 +73,7 @@ test("Kart.UI.Panel - with deferred setup", () => {
         cancel_edit : () => { cancel_edit_called++ },
     }
 
-    var r = new Kart.Model.Resource ({
+    var r = new Kart.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });

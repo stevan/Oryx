@@ -11,7 +11,7 @@ test( "Kart.Model.Resource - basic", () => {
     var update_first_name_event        = 0;
     var update_first_name_second_event = 0;
 
-    var r = new Kart.Model.Resource ({
+    var r = new Kart.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });
@@ -69,7 +69,7 @@ test( "Kart.Model.Resource - basic", () => {
 
 test( "Kart.Model.Resource - deep accessor test", () => {
 
-    var r = new Kart.Model.Resource ({
+    var r = new Kart.Model.Resource (null, {
         "name" : {
             "first"  : "Stevan",
             "middle" : "Calvert",

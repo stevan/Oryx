@@ -2,7 +2,7 @@
 test("Kart.Binding.Outlet - basic", () => {
 
     (function () {
-        var r = new Kart.Model.Resource ({
+        var r = new Kart.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         });
@@ -27,7 +27,7 @@ test("Kart.Binding.Outlet - basic", () => {
 
 
     (function () {
-        var r = new Kart.Model.Resource ({
+        var r = new Kart.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         });
@@ -55,7 +55,7 @@ test("Kart.Binding.Outlet - basic", () => {
 test("Kart.Binding.Outlet - changing targets", () => {
 
     (function () {
-        var r = new Kart.Model.Resource ({
+        var r = new Kart.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         });
@@ -93,7 +93,7 @@ test("Kart.Binding.Outlet - changing targets", () => {
 test("Kart.Binding.Outlet - with formatter", () => {
 
     (function () {
-        var r = new Kart.Model.Resource ({
+        var r = new Kart.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little",
             "age"        : 37
@@ -118,7 +118,7 @@ test("Kart.Binding.Outlet - with formatter", () => {
 test("Kart.Binding.Outlet - with deep property", () => {
 
     (function () {
-        var r = new Kart.Model.Resource ({
+        var r = new Kart.Model.Resource (null, {
             "name" : {
                 "first" : "Stevan",
                 "last"  : "Little",

@@ -11,18 +11,18 @@ test( "Kart.Model.Collection - basic", () => {
     var update_event = 0;
     var add_event    = 0;
 
-    var john = new Kart.Model.Resource ({
+    var john = new Kart.Model.Resource (null, {
         "first_name" : "John",
         "last_name"  : "Doe"
     });
 
-    var bob = new Kart.Model.Resource ({
+    var bob = new Kart.Model.Resource (null, {
         "first_name" : "Bob",
         "last_name"  : "Smith"
     });
 
     var c = new Kart.Model.Collection([
-        new Kart.Model.Resource ({
+        new Kart.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         })

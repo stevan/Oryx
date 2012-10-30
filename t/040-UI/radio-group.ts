@@ -1,7 +1,7 @@
 
 test("Kart.UI.RadioGroup - basic", () => {
 
-    var r = new Kart.Model.Resource ({
+    var r = new Kart.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little",
         "sex"        : "male"

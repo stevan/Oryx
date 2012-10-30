@@ -3,7 +3,14 @@ module Kart {
         var traverser = Kart.Core.Traversable;
         export class Resource extends Kart.Core.Observable implements Kart.Binding.IOutletTarget, ISerializable {
 
-            constructor ( public body : Object ) { super() }
+            public id   : string;
+            public body : Object;
+
+            constructor ( id : string, body : Object ) {
+                super();
+                this.id   = id;
+                this.body = body;
+            }
 
             pack (): Object { return this.body }
 
