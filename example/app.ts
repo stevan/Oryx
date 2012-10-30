@@ -7,44 +7,15 @@ class Example {
     public current_person : Kart.Model.Resource;
     public persons = new Kart.Model.Collection();
 
-    /*
-
-    public outlets = {
-        '#first_name' => 'first_name',
-        '#last_name'  => { type => 'Textbox',  prop => 'last_name' },
-        '#locked'     => { type => 'Checkbox', prop => 'locked'    }
-    };
-
-    public actions = {
-        '#save'   => { click => 'save_person' },
-        '#cancel' => { click => 'cancel_edit' },
-    };
-
-    */
-
-    public view = new Kart.UI.Panel({
-        outlets : [
-            new Kart.UI.Textbox ({
-                element  : $('#first_name'),
-                property : "first_name"
-            }),
-            new Kart.UI.Textbox ({
-                element  : $('#last_name'),
-                property : "last_name"
-            })
-        ],
-        actions : [
-            new Kart.UI.Button ({
-                element       : $('#save'),
-                event_type    : 'click',
-                target_action : 'save_person'
-            }),
-            new Kart.UI.Button ({
-                element       : $('#cancel'),
-                event_type    : 'click',
-                target_action : 'cancel_edit'
-            })
-        ]
+    public view = Kart.UI.Panel.inflate({
+        outlets : {
+            '#first_name' : { type: 'Textbox',  prop: 'first_name' },
+            '#last_name'  : { type: 'Textbox',  prop: 'last_name'  }
+        },
+        actions : {
+            '#save'   : { type: 'Button', event: 'click', action: 'save_person' },
+            '#cancel' : { type: 'Button', event: 'click', action: 'cancel_edit' }
+        }
     });
 
     public table = new Kart.UI.DataTable ({

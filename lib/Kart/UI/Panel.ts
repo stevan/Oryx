@@ -52,6 +52,33 @@ module Kart {
                 this.outlets.map(( o ) => { o.clear_target() });
                 this.trigger('clear:data_source', this);
             }
+
+            static inflate ( opts : { outlets : Object; actions : Object; } ): Kart.UI.Panel {
+                var o = [], a = [];
+
+                for ( var selector in opts.outlets ) {
+                    var args = opts.outlets[ selector ];
+                    o.push(
+                        new Kart.UI[ args.type ] ({
+                            element  : jQuery( selector ),
+                            property : args['prop']
+                        })
+                    );
+                }
+
+                for ( var selector in opts.actions ) {
+                    var args = opts.actions[ selector ];
+                    a.push(
+                        new Kart.UI[ args.type ] ({
+                            element       : jQuery( selector ),
+                            event_type    : args['event'],
+                            target_action : args['action']
+                        })
+                    );
+                }
+
+                return new Kart.UI.Panel ({ outlets : o, actions : a });
+            }
         }
     }
 }

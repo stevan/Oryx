@@ -13,15 +13,22 @@
                 background : #cccccc;
             }
 
+            fieldset {
+                width: 230px;
+            }
+
         </style>
     </head>
     <body>
         <div id="body">
-            <form id="person_form">
-                <div><div class="label">First Name</div><input type="text" id="first_name" /></div>
-                <div><div class="label">Last Name</div><input type="text" id="last_name" /></div>
-                <div><input type="button" id="save" value="Save">&nbsp;<input type="button" id="cancel" value="Cancel"></div>
-            </form>
+            <fieldset>
+                <form id="person_form">
+                    <div><div class="label">First Name</div><input type="text" id="first_name" /></div>
+                    <div><div class="label">Last Name</div><input type="text" id="last_name" /></div>
+                    <hr/>
+                    <div align="right"><input type="button" id="save" value="Save" />&nbsp;<input type="button" id="cancel" value="Cancel" /></div>
+                </form>
+            </fieldset>
             <hr/>
             <table border="1" width="500" id="table_view">
                 <thead>
