@@ -21,7 +21,7 @@ class People extends Kart.Model.Collection {
     }
 }
 
-class Example {
+class PersonController {
 
     public current_person : Person;
     public persons = new People();
@@ -75,5 +75,5 @@ class Example {
 }
 
 $(document).ready(function () {
-    var e = new Example ();
+    var e = new PersonController ();
 });
