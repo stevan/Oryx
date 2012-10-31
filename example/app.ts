@@ -2,10 +2,29 @@
 /// <reference path="../shared/jquery.js" />
 /// <reference path="../lib/Kart.ts" />
 
+interface IPerson {
+    first_name : string;
+    last_name  : string;
+}
+
+class Person extends Kart.Model.Resource {
+    constructor ( id : string, body : IPerson ) { super( id, body ) }
+}
+
+class People extends Kart.Model.Collection {
+    public resources : Person[] = [];
+
+    add ( resource : Person ): void { super.add( resource ) }
+
+    set ( index : number, resource : Person ): void {
+        super.set( index, resource );
+    }
+}
+
 class Example {
 
-    public current_person : Kart.Model.Resource;
-    public persons = new Kart.Model.Collection();
+    public current_person : Person;
+    public persons = new People();
 
     public view = Kart.UI.Panel.inflate({
         outlets : {
@@ -36,7 +55,10 @@ class Example {
     }
 
     private initialize_new_resource () {
-        this.current_person = new Kart.Model.Resource({});
+        this.current_person = new Person (null, {
+            first_name : "",
+            last_name  : ""
+        });
         this.view.set_data_source( this.current_person );
     }
 
