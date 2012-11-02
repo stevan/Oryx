@@ -1,4 +1,4 @@
-module Kart {
+module Oryx {
     export module Core {
         export module Traversable {
 
@@ -47,7 +47,7 @@ module Kart {
                             // object, they obviously the
                             // path is not valid, so we
                             // throw an error
-                            throw new Kart.Error ("The property (" + full_path + ") is not a valid property");
+                            throw new Oryx.Error ("The property (" + full_path + ") is not a valid property");
                         }
                         current = current[ part ];
                     }

@@ -1,13 +1,13 @@
 
-test("Kart.UI.Checkbox - basic", () => {
+test("Oryx.UI.Checkbox - basic", () => {
 
-    var r = new Kart.Model.Resource (null, {
+    var r = new Oryx.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little",
         "is_awesome" : true
     });
 
-    var binding = new Kart.UI.Checkbox ({
+    var binding = new Oryx.UI.Checkbox ({
         element  : $("<input type='checkbox'/>"),
         target   : r,
         property : "is_awesome"

@@ -1,7 +1,7 @@
 
-test("Kart.UI.RadioGroup - basic", () => {
+test("Oryx.UI.RadioGroup - basic", () => {
 
-    var r = new Kart.Model.Resource (null, {
+    var r = new Oryx.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little",
         "sex"        : "male"
@@ -9,7 +9,7 @@ test("Kart.UI.RadioGroup - basic", () => {
 
     var $doc = $("<div><input type='radio' name='sex' value='male' /><input type='radio' name='sex' value='female' /></div>");
 
-    var binding = new Kart.UI.RadioGroup ({
+    var binding = new Oryx.UI.RadioGroup ({
         element  : $doc.find('input:radio'),
         target   : r,
         property : "sex"

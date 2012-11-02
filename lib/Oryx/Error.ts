@@ -1,6 +1,6 @@
-module Kart {
+module Oryx {
     export class Error {
-        name    : string = "Kart Error";
+        name    : string = "Oryx Error";
         message : string;
         reason  : string;
 

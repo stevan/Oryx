@@ -1,6 +1,6 @@
 
-test( "Kart.Core.Observable - basic", () => {
-    var x = new Kart.Core.Observable ();
+test( "Oryx.Core.Observable - basic", () => {
+    var x = new Oryx.Core.Observable ();
 
     var test = 0;
     var test_event = function () { test++ };
@@ -19,9 +19,9 @@ test( "Kart.Core.Observable - basic", () => {
 });
 
 
-test( "Kart.Core.Observable - basic w/args", () => {
+test( "Oryx.Core.Observable - basic w/args", () => {
 
-    var x = new Kart.Core.Observable ();
+    var x = new Oryx.Core.Observable ();
 
     var data_1 = { value: 0 };
     var data_2 = { value: 0 };

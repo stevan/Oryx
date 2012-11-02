@@ -1,32 +1,32 @@
 
-module Kart {
+module Oryx {
     export module UI {
 
         /* Actions */
 
-        export class Button extends Kart.Binding.Action {
+        export class Button extends Oryx.Binding.Action {
             disable (): void { this.$element().attr('disabled', true) }
             enable  (): void { this.$element().attr('disabled', false) }
         }
 
         /* Outlets */
 
-        export class Textbox extends Kart.Binding.Outlet {}
+        export class Textbox extends Oryx.Binding.Outlet {}
 
-        export class Label extends Kart.Binding.Outlet {
+        export class Label extends Oryx.Binding.Outlet {
             register_element_event (): void {}; // it cannot be edited
             get_element_value (): string { return this.$element().html() }
             set_element_value ( value ): void { this.$element().html(value) }
         }
 
-        export class Checkbox extends Kart.Binding.Outlet {
+        export class Checkbox extends Oryx.Binding.Outlet {
             get_element_value (): bool { return this.$element().attr("checked") != undefined }
             set_element_value ( value: bool ): void {
                 this.$element().attr("checked", value == undefined ? false : value );
             }
         }
 
-        export class RadioGroup extends Kart.Binding.Outlet {
+        export class RadioGroup extends Oryx.Binding.Outlet {
             get_element_value (): string { return this.$element().filter(":checked").attr("value") }
             set_element_value ( value: string ): void {
                 this.$element().attr("checked", false);
@@ -36,7 +36,7 @@ module Kart {
             }
         }
 
-        export class CheckboxGroup extends Kart.Binding.Outlet {
+        export class CheckboxGroup extends Oryx.Binding.Outlet {
             get_element_value (): string[] {
                 var acc = [];
                 this.$element().filter(":checked").each( function () { acc.push( $(this).attr("value") ) } );

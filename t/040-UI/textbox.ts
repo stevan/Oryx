@@ -1,14 +1,14 @@
 
-test("Kart.UI.Textbox - basic", () => {
+test("Oryx.UI.Textbox - basic", () => {
 
-    var r = new Kart.Model.Resource (null, {
+    var r = new Oryx.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });
 
     var $input = $("<input type='text'/>");
 
-    var binding = new Kart.UI.Textbox ({
+    var binding = new Oryx.UI.Textbox ({
         element  : $input,
         target   : r,
         property : "first_name"

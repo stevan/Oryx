@@ -1,4 +1,4 @@
-module Kart {
+module Oryx {
     export module Core {
         export interface ICallback {
             (...args: any[]): void;

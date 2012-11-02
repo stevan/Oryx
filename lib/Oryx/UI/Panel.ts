@@ -1,18 +1,18 @@
 
-module Kart {
+module Oryx {
     export module UI {
-        export class Panel extends Kart.Core.Observable {
+        export class Panel extends Oryx.Core.Observable {
 
-            public actions      : Kart.Binding.Action[] = [];
-            public outlets      : Kart.Binding.Outlet[] = [];
-            private data_source : Kart.Binding.IOutletTarget;
-            private responder   : Kart.Binding.IActionTarget;
+            public actions      : Oryx.Binding.Action[] = [];
+            public outlets      : Oryx.Binding.Outlet[] = [];
+            private data_source : Oryx.Binding.IOutletTarget;
+            private responder   : Oryx.Binding.IActionTarget;
 
             constructor ( opts : {
-                actions      : Kart.Binding.Action[];
-                outlets      : Kart.Binding.Outlet[];
-                responder?   : Kart.Binding.IActionTarget;
-                data_source? : Kart.Binding.IOutletTarget;
+                actions      : Oryx.Binding.Action[];
+                outlets      : Oryx.Binding.Outlet[];
+                responder?   : Oryx.Binding.IActionTarget;
+                data_source? : Oryx.Binding.IOutletTarget;
             } ) {
                 super();
                 this.outlets = opts.outlets;
@@ -25,9 +25,9 @@ module Kart {
                 }
             }
 
-            get_responder (): Kart.Binding.IActionTarget { return this.responder }
+            get_responder (): Oryx.Binding.IActionTarget { return this.responder }
 
-            set_responder ( responder : Kart.Binding.IActionTarget ): void {
+            set_responder ( responder : Oryx.Binding.IActionTarget ): void {
                 this.responder = responder;
                 this.actions.map(( a ) => { a.set_target( this.responder ) });
                 this.trigger('update:responder', this);
@@ -39,9 +39,9 @@ module Kart {
                 this.trigger('clear:responder', this);
             }
 
-            get_data_source (): Kart.Binding.IOutletTarget { return this.data_source; }
+            get_data_source (): Oryx.Binding.IOutletTarget { return this.data_source; }
 
-            set_data_source ( data_source : Kart.Binding.IOutletTarget ): void {
+            set_data_source ( data_source : Oryx.Binding.IOutletTarget ): void {
                 this.data_source = data_source;
                 this.outlets.map(( o ) => { o.set_target( this.data_source ) });
                 this.trigger('update:data_source', this);
@@ -53,13 +53,13 @@ module Kart {
                 this.trigger('clear:data_source', this);
             }
 
-            static inflate ( opts : { outlets : Object; actions : Object; } ): Kart.UI.Panel {
+            static inflate ( opts : { outlets : Object; actions : Object; } ): Oryx.UI.Panel {
                 var o = [], a = [];
 
                 for ( var selector in opts.outlets ) {
                     var args = opts.outlets[ selector ];
                     o.push(
-                        new Kart.UI[ args.type ] ({
+                        new Oryx.UI[ args.type ] ({
                             element  : jQuery( selector ),
                             property : args['prop']
                         })
@@ -69,7 +69,7 @@ module Kart {
                 for ( var selector in opts.actions ) {
                     var args = opts.actions[ selector ];
                     a.push(
-                        new Kart.UI[ args.type ] ({
+                        new Oryx.UI[ args.type ] ({
                             element       : jQuery( selector ),
                             event_type    : args['event'],
                             target_action : args['action']
@@ -77,7 +77,7 @@ module Kart {
                     );
                 }
 
-                return new Kart.UI.Panel ({ outlets : o, actions : a });
+                return new Oryx.UI.Panel ({ outlets : o, actions : a });
             }
         }
     }

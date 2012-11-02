@@ -1,6 +1,6 @@
-test( "Kart.Core.Traversable - basic", () => {
+test( "Oryx.Core.Traversable - basic", () => {
 
-    var t = Kart.Core.Traversable;
+    var t = Oryx.Core.Traversable;
     var p = {};
 
     t.traverse_path_and_set( 'x', p, 1 );

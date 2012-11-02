@@ -1,4 +1,4 @@
-module Kart {
+module Oryx {
     export module Core {
         export class Observable implements IObservable {
             private callbacks = {};
@@ -16,7 +16,7 @@ module Kart {
                 var callbacks = this.callbacks[ event_name ];
                 for (var i = 0; i < callbacks.length; i++) {
                     if (callbacks[i] === callback) {
-                        Kart.Util.Array.remove( callbacks, i );
+                        Oryx.Util.Array.remove( callbacks, i );
                     }
                 }
                 return this;

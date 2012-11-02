@@ -1,4 +1,4 @@
-module Kart {
+module Oryx {
     export module Model {
         export interface ISerializer {
             serialize   ( x : any    ): string;

@@ -1,7 +1,7 @@
 
-test("Kart.UI.Label - basic", () => {
+test("Oryx.UI.Label - basic", () => {
 
-    var r = new Kart.Model.Resource (null, {
+    var r = new Oryx.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });
@@ -10,13 +10,13 @@ test("Kart.UI.Label - basic", () => {
     var $input = $doc.find('input');
     var $label = $doc.find('.name');
 
-    var b1 = new Kart.Binding.Outlet ({
+    var b1 = new Oryx.Binding.Outlet ({
         element  : $input,
         target   : r,
         property : "first_name"
     });
 
-    var b2 = new Kart.UI.Label ({
+    var b2 = new Oryx.UI.Label ({
         element  : $label,
         target   : r,
         property : "first_name"

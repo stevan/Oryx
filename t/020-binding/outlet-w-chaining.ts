@@ -9,8 +9,8 @@ correctly.
 
 */
 
-var traverser = Kart.Core.Traversable;
-class MyTarget extends Kart.Core.Observable implements Kart.Binding.IOutletTarget {
+var traverser = Oryx.Core.Traversable;
+class MyTarget extends Oryx.Core.Observable implements Oryx.Binding.IOutletTarget {
     public first_name = "Stevan";
     public chain;
 
@@ -32,14 +32,14 @@ class MyTarget extends Kart.Core.Observable implements Kart.Binding.IOutletTarge
     }
 }
 
-test("Kart.Binding.Outlet - with deep chaining", () => {
+test("Oryx.Binding.Outlet - with deep chaining", () => {
 
     (function () {
         var c = new MyTarget();
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element  : $input,
             target   : c,
             property : "first_name"
@@ -61,7 +61,7 @@ test("Kart.Binding.Outlet - with deep chaining", () => {
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element  : $input,
             target   : c,
             property : "chain.first_name"
@@ -83,7 +83,7 @@ test("Kart.Binding.Outlet - with deep chaining", () => {
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element  : $input,
             target   : c,
             property : "chain.chain.chain.chain.first_name"

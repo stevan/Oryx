@@ -6,23 +6,23 @@ TODO:
 
 */
 
-test( "Kart.Model.Collection - basic", () => {
+test( "Oryx.Model.Collection - basic", () => {
 
     var update_event = 0;
     var add_event    = 0;
 
-    var john = new Kart.Model.Resource (null, {
+    var john = new Oryx.Model.Resource (null, {
         "first_name" : "John",
         "last_name"  : "Doe"
     });
 
-    var bob = new Kart.Model.Resource (null, {
+    var bob = new Oryx.Model.Resource (null, {
         "first_name" : "Bob",
         "last_name"  : "Smith"
     });
 
-    var c = new Kart.Model.Collection([
-        new Kart.Model.Resource (null, {
+    var c = new Oryx.Model.Collection([
+        new Oryx.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         })

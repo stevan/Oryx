@@ -4,11 +4,11 @@ interface IPerson {
     last_name  : string;
 }
 
-class Person extends Kart.Model.Resource {
+class Person extends Oryx.Model.Resource {
     constructor( id : string, b : IPerson ) { super( id, b ) }
 }
 
-test( "Kart.Model.Resource - resource with interface", () => {
+test( "Oryx.Model.Resource - resource with interface", () => {
 
     var p1 = new Person (null, {
         "first_name" : "Stevan",

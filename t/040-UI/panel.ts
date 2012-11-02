@@ -1,5 +1,5 @@
 
-test("Kart.UI.Panel - basic", () => {
+test("Oryx.UI.Panel - basic", () => {
 
     var save_person_called = 0;
     var cancel_edit_called = 0;
@@ -9,7 +9,7 @@ test("Kart.UI.Panel - basic", () => {
         cancel_edit : () => { cancel_edit_called++ },
     }
 
-    var r = new Kart.Model.Resource (null, {
+    var r = new Oryx.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });
@@ -19,26 +19,26 @@ test("Kart.UI.Panel - basic", () => {
     var $save       = $("<input type='button' />");
     var $cancel     = $("<input type='button' />");
 
-    var view = new Kart.UI.Panel({
+    var view = new Oryx.UI.Panel({
         data_source : r,
         responder   : object,
         outlets : [
-            new Kart.UI.Textbox ({
+            new Oryx.UI.Textbox ({
                 element  : $first_name,
                 property : "first_name"
             }),
-            new Kart.UI.Textbox ({
+            new Oryx.UI.Textbox ({
                 element  : $last_name,
                 property : "last_name"
             })
         ],
         actions : [
-            new Kart.UI.Button ({
+            new Oryx.UI.Button ({
                 element       : $save,
                 event_type    : 'click',
                 target_action : 'save_person'
             }),
-            new Kart.UI.Button ({
+            new Oryx.UI.Button ({
                 element       : $cancel,
                 event_type    : 'click',
                 target_action : 'cancel_edit'
@@ -63,7 +63,7 @@ test("Kart.UI.Panel - basic", () => {
     equal(cancel_edit_called, 1, '... cancel_edit was called');
 });
 
-test("Kart.UI.Panel - with deferred setup", () => {
+test("Oryx.UI.Panel - with deferred setup", () => {
 
     var save_person_called = 0;
     var cancel_edit_called = 0;
@@ -73,7 +73,7 @@ test("Kart.UI.Panel - with deferred setup", () => {
         cancel_edit : () => { cancel_edit_called++ },
     }
 
-    var r = new Kart.Model.Resource (null, {
+    var r = new Oryx.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little"
     });
@@ -83,24 +83,24 @@ test("Kart.UI.Panel - with deferred setup", () => {
     var $save       = $("<input type='button' />");
     var $cancel     = $("<input type='button' />");
 
-    var view = new Kart.UI.Panel({
+    var view = new Oryx.UI.Panel({
         outlets : [
-            new Kart.UI.Textbox ({
+            new Oryx.UI.Textbox ({
                 element  : $first_name,
                 property : "first_name"
             }),
-            new Kart.UI.Textbox ({
+            new Oryx.UI.Textbox ({
                 element  : $last_name,
                 property : "last_name"
             })
         ],
         actions : [
-            new Kart.UI.Button ({
+            new Oryx.UI.Button ({
                 element       : $save,
                 event_type    : 'click',
                 target_action : 'save_person'
             }),
-            new Kart.UI.Button ({
+            new Oryx.UI.Button ({
                 element       : $cancel,
                 event_type    : 'click',
                 target_action : 'cancel_edit'

@@ -3,7 +3,7 @@
 /// <reference path="../shared/jquery.d.ts" />
 /// <reference path="../shared/jquery.js" />
 
-/// <reference path="../lib/Kart.ts" />
+/// <reference path="../lib/Oryx.ts" />
 
 /// <reference path="010-core/error.ts" />
 /// <reference path="010-core/observable.ts" />

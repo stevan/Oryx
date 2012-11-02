@@ -1,15 +1,15 @@
 
-test("Kart.Binding.Outlet - basic", () => {
+test("Oryx.Binding.Outlet - basic", () => {
 
     (function () {
-        var r = new Kart.Model.Resource (null, {
+        var r = new Oryx.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         });
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element  : $input,
             target   : r,
             property : "first_name"
@@ -27,14 +27,14 @@ test("Kart.Binding.Outlet - basic", () => {
 
 
     (function () {
-        var r = new Kart.Model.Resource (null, {
+        var r = new Oryx.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         });
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element  : $input,
             target   : r,
             property : "first_name"
@@ -52,17 +52,17 @@ test("Kart.Binding.Outlet - basic", () => {
 
 });
 
-test("Kart.Binding.Outlet - changing targets", () => {
+test("Oryx.Binding.Outlet - changing targets", () => {
 
     (function () {
-        var r = new Kart.Model.Resource (null, {
+        var r = new Oryx.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little"
         });
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element  : $input,
             property : "first_name"
         });
@@ -90,10 +90,10 @@ test("Kart.Binding.Outlet - changing targets", () => {
 
 });
 
-test("Kart.Binding.Outlet - with formatter", () => {
+test("Oryx.Binding.Outlet - with formatter", () => {
 
     (function () {
-        var r = new Kart.Model.Resource (null, {
+        var r = new Oryx.Model.Resource (null, {
             "first_name" : "Stevan",
             "last_name"  : "Little",
             "age"        : 37
@@ -101,7 +101,7 @@ test("Kart.Binding.Outlet - with formatter", () => {
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element     : $input,
             target      : r,
             property    : "age",
@@ -115,10 +115,10 @@ test("Kart.Binding.Outlet - with formatter", () => {
 
 });
 
-test("Kart.Binding.Outlet - with deep property", () => {
+test("Oryx.Binding.Outlet - with deep property", () => {
 
     (function () {
-        var r = new Kart.Model.Resource (null, {
+        var r = new Oryx.Model.Resource (null, {
             "name" : {
                 "first" : "Stevan",
                 "last"  : "Little",
@@ -127,7 +127,7 @@ test("Kart.Binding.Outlet - with deep property", () => {
 
         var $input = $("<input type='text'/>");
 
-        var binding = new Kart.Binding.Outlet ({
+        var binding = new Oryx.Binding.Outlet ({
             element     : $input,
             target      : r,
             property    : "name.first",

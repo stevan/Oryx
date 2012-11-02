@@ -1,4 +1,4 @@
-module Kart {
+module Oryx {
     export module Util {
 
         export module Array {
@@ -12,7 +12,7 @@ module Kart {
         export module Serializer {
             declare var JSON;
 
-            export var json : Kart.Model.ISerializer = {
+            export var json : Oryx.Model.ISerializer = {
                 serialize   : ( obj  : any    ): string => { return JSON.stringify( obj ) },
                 deserialize : ( json : string ): any    => { return JSON.parse( json )    }
             };

@@ -1,14 +1,14 @@
-module Kart {
+module Oryx {
     export module UI {
 
-        export class DataTable extends Kart.Core.Observable {
+        export class DataTable extends Oryx.Core.Observable {
 
             public table_body       : string;
             public row_selector     : string;
             public binding_spec     : Object;
             public keyboard_nav     : bool = false;
             public select_by_row    : bool = false;
-            public data_source      : Kart.Model.Collection;
+            public data_source      : Oryx.Model.Collection;
 
             private keydown_handler : ( e ) => void;
             private $table          : JQuery;
@@ -20,7 +20,7 @@ module Kart {
                 binding_spec   : Object;
                 keyboard_nav?  : bool;
                 select_by_row? : bool;
-                data_source?   : Kart.Model.Collection;
+                data_source?   : Oryx.Model.Collection;
             } ) {
                 super();
                 this.table_body    = opts.table_body;
@@ -47,7 +47,7 @@ module Kart {
                 }
             }
 
-            set_data_source ( data_source : Kart.Model.Collection ): void {
+            set_data_source ( data_source : Oryx.Model.Collection ): void {
                 this.data_source = data_source;
                 this.init();
                 this.data_source.bind( 'add', ( c, idx, r ) => {
@@ -90,7 +90,7 @@ module Kart {
                 this.$table.append( $new_row );
             }
 
-            populate_row ( $row : JQuery, index : number, element : Kart.Model.Resource ): void {
+            populate_row ( $row : JQuery, index : number, element : Oryx.Model.Resource ): void {
                 for ( var selector in this.binding_spec ) {
                     var property = this.binding_spec[ selector ];
                     if ( property.constructor == Function ) {

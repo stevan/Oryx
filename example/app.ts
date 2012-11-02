@@ -1,17 +1,17 @@
 /// <reference path="../shared/jquery.d.ts" />
 /// <reference path="../shared/jquery.js" />
-/// <reference path="../lib/Kart.ts" />
+/// <reference path="../lib/Oryx.ts" />
 
 interface IPerson {
     first_name : string;
     last_name  : string;
 }
 
-class Person extends Kart.Model.Resource {
+class Person extends Oryx.Model.Resource {
     constructor ( id : string, body : IPerson ) { super( id, body ) }
 }
 
-class People extends Kart.Model.Collection {
+class People extends Oryx.Model.Collection {
     public resources : Person[] = [];
 
     add ( resource : Person ): void { super.add( resource ) }
@@ -26,7 +26,7 @@ class PersonController {
     public current_person : Person;
     public persons = new People();
 
-    public view = Kart.UI.Panel.inflate({
+    public view = Oryx.UI.Panel.inflate({
         outlets : {
             '#first_name' : { type: 'Textbox',  prop: 'first_name' },
             '#last_name'  : { type: 'Textbox',  prop: 'last_name'  }
@@ -37,7 +37,7 @@ class PersonController {
         }
     });
 
-    public table = new Kart.UI.DataTable ({
+    public table = new Oryx.UI.DataTable ({
         keyboard_nav  : true,
         select_by_row : true,
         table_body    : '#table_view tbody',

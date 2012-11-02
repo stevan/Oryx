@@ -1,7 +1,7 @@
 
-test("Kart.UI.CheckboxGroup - basic", () => {
+test("Oryx.UI.CheckboxGroup - basic", () => {
 
-    var r = new Kart.Model.Resource (null, {
+    var r = new Oryx.Model.Resource (null, {
         "first_name" : "Stevan",
         "last_name"  : "Little",
         "titles"     : ["programmer","manager"]
@@ -13,7 +13,7 @@ test("Kart.UI.CheckboxGroup - basic", () => {
                + "<input type='checkbox' name='title' value='sysadmin' />"
                + "</div>");
 
-    var binding = new Kart.UI.CheckboxGroup ({
+    var binding = new Oryx.UI.CheckboxGroup ({
         element  : $doc.find('input:checkbox'),
         target   : r,
         property : "titles"

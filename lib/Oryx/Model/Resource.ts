@@ -1,7 +1,7 @@
-module Kart {
+module Oryx {
     export module Model {
-        var traverser = Kart.Core.Traversable;
-        export class Resource extends Kart.Core.Observable implements Kart.Binding.IOutletTarget, ISerializable {
+        var traverser = Oryx.Core.Traversable;
+        export class Resource extends Oryx.Core.Observable implements Oryx.Binding.IOutletTarget, ISerializable {
 
             public id   : string;
             public body : Object;

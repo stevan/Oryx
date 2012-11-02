@@ -1,6 +1,6 @@
-module Kart {
+module Oryx {
     export module Model {
-        export class Collection extends Kart.Core.Observable implements ISerializable {
+        export class Collection extends Oryx.Core.Observable implements ISerializable {
 
             constructor ( private resources : Resource[] = [] ) { super() }
 

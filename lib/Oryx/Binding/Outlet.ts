@@ -1,4 +1,4 @@
-module Kart {
+module Oryx {
     export module Binding {
         export class Outlet {
 

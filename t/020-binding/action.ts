@@ -1,10 +1,10 @@
-test("Kart.Binding.Action - basic", () => {
+test("Oryx.Binding.Action - basic", () => {
     var object = {
         counter      : 0,
         test_counter : function () { this.counter++ }
     };
 
-    var a = new Kart.Binding.Action ({
+    var a = new Oryx.Binding.Action ({
         element       : $('<input type="button" />'),
         event_type    : 'click',
         target        : object,
@@ -18,13 +18,13 @@ test("Kart.Binding.Action - basic", () => {
     equal( object.counter, 2, '... counter incremented correctly (again)' );
 });
 
-test("Kart.Binding.Outlet - clearing and setting targets", () => {
+test("Oryx.Binding.Outlet - clearing and setting targets", () => {
     var object = {
         counter      : 0,
         test_counter : function () { this.counter++ }
     };
 
-    var a = new Kart.Binding.Action ({
+    var a = new Oryx.Binding.Action ({
         element       : $('<input type="button" />'),
         event_type    : 'click',
         target_action : 'test_counter'
@@ -52,11 +52,11 @@ class Counter {
     test_counter () { this.counter++ }
 }
 
-test("Kart.Binding.Action - with object", () => {
+test("Oryx.Binding.Action - with object", () => {
 
     var object = new Counter ();
 
-    var a = new Kart.Binding.Action ({
+    var a = new Oryx.Binding.Action ({
         element       : $('<input type="button" />'),
         event_type    : 'click',
         target        : object,
