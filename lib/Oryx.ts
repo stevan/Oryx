@@ -1,8 +1,9 @@
-/// <reference path="../shared/jquery.d.ts" />
+/// <reference path="../../Rosetta/lib/Rosetta.ts" />
 
 /// <reference path="../lib/Oryx/Error.ts" />
 
 /// <reference path="../lib/Oryx/Util.ts" />
+/// <reference path="../lib/Oryx/Util/DOM.ts" />
 
 /// <reference path="../lib/Oryx/Core.ts" />
 /// <reference path="../lib/Oryx/Core/Observable.ts" />
@@ -24,5 +25,7 @@
 module Oryx {
     export var VERSION   = 0.01;
     export var AUTHORITY = "cpan:STEVAN";
+
+    export var Node : Rosetta.INodeStatic;
 }
 

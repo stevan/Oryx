@@ -1,6 +1,9 @@
-/// <reference path="../shared/jquery.d.ts" />
-/// <reference path="../shared/jquery.js" />
 /// <reference path="../lib/Oryx.ts" />
+
+/// <reference path="../shared/jquery.d.ts" />
+/// <reference path="../../Rosetta/lib/Rosetta/JQuery.ts" />
+
+Oryx.Node = Rosetta.JQuery.Node;
 
 interface IPerson {
     first_name : string;
@@ -77,3 +80,4 @@ class PersonController {
 $(document).ready(function () {
     var e = new PersonController ();
 });
+
