@@ -11,8 +11,8 @@ module Oryx {
             public data_source      : Oryx.Model.Collection;
 
             private keydown_handler : ( e ) => void;
-            private $table          : JQuery;
-            private $row_template   : JQuery;
+            private $table          : Rosetta.INode;
+            private $row_template   : Rosetta.INode;
 
             constructor ( opts : {
                 table_body     : string;
@@ -57,8 +57,8 @@ module Oryx {
 
             init (): void {
                 if ( this.$table == undefined ) {
-                    this.$table        = jQuery( this.table_body );
-                    this.$row_template = this.$table.find( this.row_selector ).clone( true );
+                    this.$table        = new Oryx.RosettaNode( this.table_body );
+                    this.$row_template = this.$table.find_one( this.row_selector ).clone( true );
                 }
 
                 this.$table.empty();
@@ -67,8 +67,9 @@ module Oryx {
                 }
 
                 if ( this.keyboard_nav == true ) {
-                    jQuery( document ).unbind( 'keydown', this.keydown_handler );
-                    jQuery( document ).bind( 'keydown', this.keydown_handler );
+                    var $document = new Oryx.RosettaNode( document );
+                    $document.unbind( 'keydown', this.keydown_handler );
+                    $document.bind( 'keydown', this.keydown_handler );
                 }
             }
 
@@ -90,58 +91,55 @@ module Oryx {
                 this.$table.append( $new_row );
             }
 
-            populate_row ( $row : JQuery, index : number, element : Oryx.Model.Resource ): void {
+            populate_row ( $row : Rosetta.INode, index : number, element : Oryx.Model.Resource ): void {
                 for ( var selector in this.binding_spec ) {
                     var property = this.binding_spec[ selector ];
                     if ( property.constructor == Function ) {
-                        var args : any[] = [ $row.find( selector ), element ];
+                        var args : any[] = [ $row.find_one( selector ), element ];
                         property.apply( this, args );
                     }
                     else {
-                        $row.find( selector ).html( element.get( property ) );
+                        $row.find_one( selector ).html( element.get( property ) );
                     }
                 }
 
                 if ( this.select_by_row == true ) {
-                    var self = this;
-                    $row.click(
-                        function () {
-                            jQuery( this ).siblings().removeClass( 'selected' );
-                            jQuery( this ).addClass( 'selected' );
-                            self.trigger( 'selected', index );
-                        }
-                    );
+                    $row.bind( 'click', () => {
+                        $row.siblings().each( ( n ) => { n.remove_class( 'selected' ) });
+                        $row.add_class( 'selected' );
+                        this.trigger( 'selected', index );
+                    });
                 }
 
                 this.trigger( 'populate_row', this, $row, index, element );
             }
 
             clear_selection (): void {
-                this.$table.find( this.row_selector ).removeClass( 'selected' );
+                this.$table.find_one( this.row_selector ).remove_class( 'selected' );
                 this.trigger( 'clear:selected' );
             }
 
             move_selection_up (): void {
-                var $row  = this.$table.find( '.selected' );
-                if ( $row.length != 0 ) {
+                var $row  = this.$table.find_one( '.selected' );
+                if ( $row ) {
                     var $prev = $row.prev();
-                    if ( $prev.length != 0 ) {
-                        $row.removeClass( 'selected' );
+                    if ( $prev ) {
+                        $row.remove_class( 'selected' );
                         this.trigger( 'clear:selected' );
-                        $prev.addClass( 'selected' );
+                        $prev.add_class( 'selected' );
                         this.trigger( 'selected', $prev.index() );
                     }
                 }
             }
 
             move_selection_down (): void {
-                var $row  = this.$table.find( '.selected' );
-                if ( $row.length != 0 ) {
+                var $row  = this.$table.find_one( '.selected' );
+                if ( $row ) {
                     var $next = $row.next();
-                    if ( $next.length != 0 ) {
-                        $row.removeClass( 'selected' );
+                    if ( $next ) {
+                        $row.remove_class( 'selected' );
                         this.trigger( 'clear:selected' );
-                        $next.addClass( 'selected' );
+                        $next.add_class( 'selected' );
                         this.trigger( 'selected', $next.index() );
                     }
                 }

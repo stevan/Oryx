@@ -37,7 +37,7 @@ test("Oryx.Binding.Outlet - with deep chaining", () => {
     (function () {
         var c = new MyTarget();
 
-        var $input = $("<input type='text'/>");
+        var $input = Oryx.RosettaNode.create("<input type='text'/>");
 
         var binding = new Oryx.Binding.Outlet ({
             element  : $input,
@@ -59,7 +59,7 @@ test("Oryx.Binding.Outlet - with deep chaining", () => {
     (function () {
         var c = new MyTarget();
 
-        var $input = $("<input type='text'/>");
+        var $input = Oryx.RosettaNode.create("<input type='text'/>");
 
         var binding = new Oryx.Binding.Outlet ({
             element  : $input,
@@ -81,7 +81,7 @@ test("Oryx.Binding.Outlet - with deep chaining", () => {
     (function () {
         var c = new MyTarget();
 
-        var $input = $("<input type='text'/>");
+        var $input = Oryx.RosettaNode.create("<input type='text'/>");
 
         var binding = new Oryx.Binding.Outlet ({
             element  : $input,

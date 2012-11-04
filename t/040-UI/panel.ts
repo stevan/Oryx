@@ -14,10 +14,10 @@ test("Oryx.UI.Panel - basic", () => {
         "last_name"  : "Little"
     });
 
-    var $first_name = $("<input type='text' />");
-    var $last_name  = $("<input type='text' />");
-    var $save       = $("<input type='button' />");
-    var $cancel     = $("<input type='button' />");
+    var $first_name = Oryx.RosettaNode.create("<input type='text' />");
+    var $last_name  = Oryx.RosettaNode.create("<input type='text' />");
+    var $save       = Oryx.RosettaNode.create("<input type='button' />");
+    var $cancel     = Oryx.RosettaNode.create("<input type='button' />");
 
     var view = new Oryx.UI.Panel({
         data_source : r,
@@ -57,9 +57,9 @@ test("Oryx.UI.Panel - basic", () => {
     $last_name.trigger('change'); // gotta manually trigger this in the test
     equal(r.get('last_name'), "Jones", "... got the right value for updated resource after changing DOM");
 
-    $save.click();
+    $save.trigger('click');
     equal(save_person_called, 1, '... save_person was called');
-    $cancel.click();
+    $cancel.trigger('click');
     equal(cancel_edit_called, 1, '... cancel_edit was called');
 });
 
@@ -78,10 +78,10 @@ test("Oryx.UI.Panel - with deferred setup", () => {
         "last_name"  : "Little"
     });
 
-    var $first_name = $("<input type='text' />");
-    var $last_name  = $("<input type='text' />");
-    var $save       = $("<input type='button' />");
-    var $cancel     = $("<input type='button' />");
+    var $first_name = Oryx.RosettaNode.create("<input type='text' />");
+    var $last_name  = Oryx.RosettaNode.create("<input type='text' />");
+    var $save       = Oryx.RosettaNode.create("<input type='button' />");
+    var $cancel     = Oryx.RosettaNode.create("<input type='button' />");
 
     var view = new Oryx.UI.Panel({
         outlets : [
@@ -124,16 +124,16 @@ test("Oryx.UI.Panel - with deferred setup", () => {
     $last_name.trigger('change'); // gotta manually trigger this in the test
     equal(r.get('last_name'), "Jones", "... got the right value for updated resource after changing DOM");
 
-    $save.click();
+    $save.trigger('click');
     equal(save_person_called, 0, '... save_person was not called');
-    $cancel.click();
+    $cancel.trigger('click');
     equal(cancel_edit_called, 0, '... cancel_edit was not called');
 
     view.set_responder( object );
 
-    $save.click();
+    $save.trigger('click');
     equal(save_person_called, 1, '... save_person was called');
-    $cancel.click();
+    $cancel.trigger('click');
     equal(cancel_edit_called, 1, '... cancel_edit was called');
 });
 

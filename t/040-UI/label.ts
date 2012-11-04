@@ -6,9 +6,9 @@ test("Oryx.UI.Label - basic", () => {
         "last_name"  : "Little"
     });
 
-    var $doc   = $("<div><span class='name'></span><input type='text'/></div>");
-    var $input = $doc.find('input');
-    var $label = $doc.find('.name');
+    var $doc   = Oryx.RosettaNode.create("<div><span class='name'></span><input type='text'/></div>");
+    var $input = $doc.find_one('input');
+    var $label = $doc.find_one('.name');
 
     var b1 = new Oryx.Binding.Outlet ({
         element  : $input,

@@ -2,7 +2,7 @@ module Oryx {
     export module Binding {
         export class Outlet {
 
-            public element     : JQuery;
+            public $element    : Rosetta.INode;
             public property    : string;
             public target      : IOutletTarget;
             public transformer : ( x : any ) => any;
@@ -12,13 +12,13 @@ module Oryx {
             public target_event;
 
             constructor ( opts : {
-                element        : JQuery;
+                element        : Rosetta.INode;
                 property       : string;
                 target?        : Object;
                 transformer?   : ( x : any ) => any;
                 formatter?     : ( x : any ) => any;
             } ) {
-                this.element     = opts.element;
+                this.$element     = opts.element;
                 this.property    = opts.property;
                 this.target      = <IOutletTarget> opts.target;
                 this.transformer = opts.transformer;
@@ -28,10 +28,6 @@ module Oryx {
                 this.target_event  = () => { this.update_element.apply( this, arguments ) }
 
                 this.setup();
-            }
-
-            $element (): JQuery {
-                return jQuery( this.element )
             }
 
             setup (): void {
@@ -96,19 +92,19 @@ module Oryx {
             // element handlers
 
             register_element_event (): void {
-                this.$element().bind( 'change', this.element_event );
+                this.$element.bind( 'change', this.element_event );
             }
 
             unregister_element_event (): void {
-                this.$element().unbind( 'change', this.element_event );
+                this.$element.unbind( 'change', this.element_event );
             }
 
             get_element_value (): any {
-                return this.$element().val();
+                return this.$element.val();
             }
 
             set_element_value ( value : any ): void {
-                this.$element().val( value == undefined ? "" : value );
+                this.$element.val( value == undefined ? "" : value );
             }
 
             // target handlers

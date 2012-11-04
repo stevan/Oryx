@@ -26,6 +26,6 @@ module Oryx {
     export var VERSION   = 0.01;
     export var AUTHORITY = "cpan:STEVAN";
 
-    export var Node : Rosetta.INodeStatic;
+    export var RosettaNode : Rosetta.INodeStatic;
 }
 

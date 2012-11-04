@@ -3,7 +3,7 @@
 /// <reference path="../shared/jquery.d.ts" />
 /// <reference path="../../Rosetta/lib/Rosetta/JQuery.ts" />
 
-Oryx.Node = Rosetta.JQuery.Node;
+Oryx.RosettaNode = Rosetta.JQuery.Node;
 
 interface IPerson {
     first_name : string;

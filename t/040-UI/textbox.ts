@@ -6,7 +6,7 @@ test("Oryx.UI.Textbox - basic", () => {
         "last_name"  : "Little"
     });
 
-    var $input = $("<input type='text'/>");
+    var $input = Oryx.RosettaNode.create("<input type='text'/>");
 
     var binding = new Oryx.UI.Textbox ({
         element  : $input,

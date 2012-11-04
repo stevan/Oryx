@@ -2,29 +2,25 @@ module Oryx {
     export module Binding {
         export class Action {
 
-            public element       : JQuery;
+            public $element      : Rosetta.INode;
             public event_type    : string;
             public target        : IActionTarget;
             public target_action : string;
-            public element_event : ( e : JQueryEventObject ) => void;
+            public element_event : ( e ) => void;
 
             constructor ( opts : {
-                element        : JQuery;
+                element        : Rosetta.INode;
                 event_type     : string;
                 target?        : Object;
                 target_action? : string;
             } ) {
-                this.element       = opts.element;
+                this.$element      = opts.element;
                 this.event_type    = opts.event_type;
                 this.target        = <IActionTarget> opts.target;
                 this.target_action = opts.target_action;
                 this.element_event = ( e ) => { this.call_target_action( e ) };
 
                 this.setup();
-            }
-
-            $element (): JQuery {
-                return jQuery( this.element )
             }
 
             setup (): void {
@@ -53,14 +49,14 @@ module Oryx {
             }
 
             register_element_event (): void {
-                this.$element().bind( this.event_type, this.element_event );
+                this.$element.bind( this.event_type, this.element_event );
             }
 
             unregister_element_event (): void {
-                this.$element().unbind( this.event_type, this.element_event );
+                this.$element.unbind( this.event_type, this.element_event );
             }
 
-            call_target_action ( e : JQueryEventObject ): void {
+            call_target_action ( e ): void {
                 // XXX - maybe this should throw an error??
                 if ( this.target                     == undefined ) return;
                 if ( this.target[this.target_action] == undefined ) return;

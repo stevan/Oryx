@@ -60,7 +60,7 @@ module Oryx {
                     var args = opts.outlets[ selector ];
                     o.push(
                         new Oryx.UI[ args.type ] ({
-                            element  : jQuery( selector ),
+                            element  : new Oryx.RosettaNode( selector ),
                             property : args['prop']
                         })
                     );
@@ -70,7 +70,7 @@ module Oryx {
                     var args = opts.actions[ selector ];
                     a.push(
                         new Oryx.UI[ args.type ] ({
-                            element       : jQuery( selector ),
+                            element       : new Oryx.RosettaNode( selector ),
                             event_type    : args['event'],
                             target_action : args['action']
                         })
