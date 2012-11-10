@@ -3,8 +3,6 @@
 /// <reference path="../shared/jquery.d.ts" />
 /// <reference path="../../Rosetta/lib/Rosetta/JQuery.ts" />
 
-Oryx.RosettaNode = Rosetta.JQuery.Node;
-
 interface IPerson {
     first_name : string;
     last_name  : string;
@@ -77,7 +75,9 @@ class PersonController {
     }
 }
 
-$(document).ready(function () {
-    var e = new PersonController ();
-});
+
+Oryx.ready(
+    Rosetta.JQuery.Node,
+    () => { var e = new PersonController () }
+);
 

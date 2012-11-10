@@ -27,5 +27,10 @@ module Oryx {
     export var AUTHORITY = "cpan:STEVAN";
 
     export var RosettaNode : Rosetta.INodeStatic;
+
+    export function ready ( Node : Rosetta.INodeStatic, callback : () => void ) {
+        RosettaNode = Node;
+        Node.ready( callback );
+    }
 }
 
