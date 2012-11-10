@@ -1,5 +1,4 @@
 /// <reference path="../shared/qunit.d.ts" />
-/// <reference path="../shared/jquery.d.ts" />
 
 /// <reference path="../lib/Oryx.ts" />
 /// <reference path="../../Rosetta/lib/Rosetta/JQuery.ts" />

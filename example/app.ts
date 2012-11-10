@@ -1,6 +1,4 @@
 /// <reference path="../lib/Oryx.ts" />
-
-/// <reference path="../shared/jquery.d.ts" />
 /// <reference path="../../Rosetta/lib/Rosetta/JQuery.ts" />
 
 interface IPerson {
