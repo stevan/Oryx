@@ -21,6 +21,19 @@ module Oryx {
 
             get ( index : number ): Resource { return this.resources[ index ] }
 
+            getById ( id : string ): Resource {
+                var length = this.length();
+
+                for ( var i = 0; i < length; i++ ) {
+                    var resource = this.get( i );
+                    if ( resource.id === id ) {
+                        return resource;
+                    }
+                }
+
+                return;
+            }
+
             set ( index : number, resource : Resource ): void {
                 this.resources[ index ] = resource;
                 this.trigger( 'update:' + index, this, index, resource );
