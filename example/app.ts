@@ -68,7 +68,7 @@ class PersonController {
     }
 
     delete_person ( e ) {
-        var index = this.table.index_for_node(jQuery(e.currentTarget));
+        var index = this.table.index_for_node(e.currentTarget);
         this.persons.remove(index);
     }
 
