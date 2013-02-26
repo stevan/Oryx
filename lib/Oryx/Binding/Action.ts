@@ -7,18 +7,21 @@ module Oryx {
             public target        : IActionTarget;
             public target_action : string;
             public element_event : ( e : JQueryEventObject ) => void;
+            public validator     : ( x : Object ) => bool;
 
             constructor ( opts : {
                 element        : JQuery;
                 event_type     : string;
                 target?        : Object;
                 target_action? : string;
+                validator?     : ( x : Object ) => bool;
             } ) {
                 this.element       = opts.element;
                 this.event_type    = opts.event_type;
                 this.target        = <IActionTarget> opts.target;
                 this.target_action = opts.target_action;
                 this.element_event = ( e ) => { this.call_target_action( e ) };
+                this.validator     = opts.validator;
 
                 this.setup();
             }
@@ -61,6 +64,12 @@ module Oryx {
             }
 
             call_target_action ( e : JQueryEventObject ): void {
+                if ( this.validator ) {
+                    if (!this.validator( this.target )) {
+                        return;
+                    }
+                }
+
                 // XXX - maybe this should throw an error??
                 if ( this.target                     == undefined ) return;
                 if ( this.target[this.target_action] == undefined ) return;

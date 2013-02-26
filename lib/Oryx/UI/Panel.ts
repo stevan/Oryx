@@ -75,7 +75,8 @@ module Oryx {
                         new Oryx.UI[ args.type ] ({
                             element       : jQuery( selector ),
                             event_type    : args['event'],
-                            target_action : args['action']
+                            target_action : args['action'],
+                            validator     : args['validator'],
                         })
                     );
                 }
