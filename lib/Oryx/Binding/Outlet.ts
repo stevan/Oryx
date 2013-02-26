@@ -66,6 +66,23 @@ module Oryx {
 
             // default events
 
+            validate_or_warn (): bool {
+                if (this.validator) {
+                    var value = this.get_element_value();
+                    if ( this.transformer ) {
+                        value = this.transformer( value );
+                    }
+
+                    if (!this.validator( value )) {
+                        this.show_error();
+                        return false;
+                    }
+                }
+
+                this.clear_error();
+                return true;
+            }
+
             update_target (): void {
                 var value = this.get_element_value();
                 if ( this.transformer ) {
