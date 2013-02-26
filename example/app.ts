@@ -33,6 +33,8 @@ class PersonController {
             '#last_name'  : { type: 'Textbox',  prop: 'last_name'  }
         },
         actions : {
+            '.delete' : { type: 'Button', event: 'click', action: 'delete_person' },
+
             '#add'    : { type: 'Button', event: 'click', action: 'add_person' },
             '#cancel' : { type: 'Button', event: 'click', action: 'cancel_edit' }
         }
@@ -63,6 +65,11 @@ class PersonController {
             last_name  : ""
         });
         this.view.set_data_source( this.current_person );
+    }
+
+    delete_person ( e ) {
+        var index = this.table.index_for_node(jQuery(e.currentTarget));
+        this.persons.remove(index);
     }
 
     add_person ( e ) {
