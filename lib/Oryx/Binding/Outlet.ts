@@ -7,6 +7,7 @@ module Oryx {
             public target      : IOutletTarget;
             public transformer : ( x : any ) => any;
             public formatter   : ( x : any ) => any;
+            public validator   : ( x : any ) => bool;
 
             public element_event;
             public target_event;
@@ -17,12 +18,14 @@ module Oryx {
                 target?        : Object;
                 transformer?   : ( x : any ) => any;
                 formatter?     : ( x : any ) => any;
+                validator?     : ( x : any ) => bool;
             } ) {
                 this.element     = opts.element;
                 this.property    = opts.property;
                 this.target      = <IOutletTarget> opts.target;
                 this.transformer = opts.transformer;
                 this.formatter   = opts.formatter;
+                this.validator   = opts.validator;
 
                 this.element_event = () => { this.update_target() };
                 this.target_event  = () => { this.update_element.apply( this, arguments ) }
@@ -68,6 +71,15 @@ module Oryx {
                 if ( this.transformer ) {
                     value = this.transformer( value );
                 }
+                if ( this.validator ) {
+                    if (!this.validator( value )) {
+                        this.show_error();
+                    }
+                    else {
+                        this.clear_error();
+                    }
+                }
+
                 this.set_target_value( value );
             }
 
