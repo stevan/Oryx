@@ -21,7 +21,7 @@ module Oryx {
 
             remove ( index : number ): void {
                 var resource = this.resources[ index ];
-                delete this.resources[ index ];
+                this.resources.splice(index, 1);
                 this.trigger( 'remove', this, index, resource );
             }
 
