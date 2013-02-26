@@ -43,16 +43,8 @@ class PersonController {
         actions : {
             '.delete' : { type: 'Button', event: 'click', action: 'delete_person' },
 
-            '#cancel' : { type: 'Button', event: 'click', action: 'cancel_edit' },
-
-            '#add' : {
-                type      : 'Button',
-                event     : 'click',
-                action    : 'add_person',
-                validator : function (source) {
-                    return source.validate_add_person();
-                },
-            },
+            '#add'    : { type: 'Button', event: 'click', action: 'add_person' },
+            '#cancel' : { type: 'Button', event: 'click', action: 'cancel_edit' }
         }
     });
 
@@ -86,23 +78,6 @@ class PersonController {
     delete_person ( e ) {
         var index = this.table.index_for_node(e.currentTarget);
         this.persons.remove(index);
-    }
-
-    validate_add_person ( ) {
-        var p = this.current_person,
-            is_valid = true;
-
-        if (!p.get('first_name')) {
-            is_valid = false;
-            jQuery('#first_name').closest('.control-group').addClass('error');
-        }
-
-        if (!p.get('last_name')) {
-            is_valid = false;
-            jQuery('#last_name').closest('.control-group').addClass('error');
-        }
-
-        return is_valid;
     }
 
     add_person ( e ) {
