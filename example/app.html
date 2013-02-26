@@ -3,8 +3,15 @@
     <head>
         <title>Oryx Example</title>
         <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+        <style type="text/css">
+            #oryx .control-group,
+            #oryx .controls,
+            #oryx input {
+                margin-bottom: 0;
+            }
+        </style>
     </head>
-    <body>
+    <body id="oryx">
         <div style="margin: 1em" class="span7">
             <table id="table_view" class="table table-bordered table-striped">
                 <thead>
@@ -21,8 +28,20 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td> <input type="text" class="input-large" id="first_name" placeholder="First Name"> </td>
-                        <td> <input type="text" class="input-large" id="last_name" placeholder="Last Name"> </td>
+                        <td>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <input type="text" class="input-large" id="first_name" placeholder="First Name">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <input type="text" class="input-large" id="last_name" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">
