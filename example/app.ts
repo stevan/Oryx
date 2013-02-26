@@ -32,7 +32,7 @@ class PersonController {
             '#last_name'  : { type: 'Textbox',  prop: 'last_name'  }
         },
         actions : {
-            '#save'   : { type: 'Button', event: 'click', action: 'save_person' },
+            '#add'    : { type: 'Button', event: 'click', action: 'add_person' },
             '#cancel' : { type: 'Button', event: 'click', action: 'cancel_edit' }
         }
     });
@@ -62,7 +62,7 @@ class PersonController {
         this.view.set_data_source( this.current_person );
     }
 
-    save_person ( e ) {
+    add_person ( e ) {
         var p = this.current_person;
         this.persons.add( p );
         this.initialize_new_resource();
