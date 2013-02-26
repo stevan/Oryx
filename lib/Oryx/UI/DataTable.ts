@@ -53,6 +53,9 @@ module Oryx {
                 this.data_source.bind( 'add', ( c, idx, r ) => {
                     this.add_new_row( idx )
                 });
+                this.data_source.bind( 'remove', ( c, idx, r ) => {
+                    this.remove_row( idx )
+                });
             }
 
             init (): void {
@@ -88,6 +91,10 @@ module Oryx {
 
                 this.populate_row( $new_row, index, this.data_source.get( index ) )
                 this.$table.append( $new_row );
+            }
+
+            remove_row ( index : number ): void {
+                this.$table.find( this.row_selector ).slice(index, index+1).detach();
             }
 
             populate_row ( $row : JQuery, index : number, element : Oryx.Model.Resource ): void {
