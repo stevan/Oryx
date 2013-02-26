@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Oryx Example</title>
-        <style type="text/css">
-
-            .label {
-                float : left;
-                width : 100px;
-            }
-
-            .selected {
-                background : #cccccc;
-            }
-
-            fieldset {
-                width: 230px;
-            }
-
-        </style>
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
     </head>
     <body>
-        <div id="body">
-            <fieldset>
-                <form id="person_form">
-                    <div><div class="label">First Name</div><input type="text" id="first_name" /></div>
-                    <div><div class="label">Last Name</div><input type="text" id="last_name" /></div>
-                    <hr/>
-                    <div align="right"><input type="button" id="save" value="Save" />&nbsp;<input type="button" id="cancel" value="Cancel" /></div>
-                </form>
-            </fieldset>
-            <hr/>
-            <table border="1" width="500" id="table_view">
+        <div style="margin: 1em" class="span7">
+            <table id="table_view" class="table table-bordered table-striped">
                 <thead>
-                    <tr><td>First Name</td><td>Last Name</td></tr>
+                    <tr>
+                        <th>First Name</td>
+                        <th>Last Name</td>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td class="first_name"></td><td class="last_name"></td></tr>
+                    <tr>
+                        <td class="first_name"></td>
+                        <td class="last_name"></td>
+                    </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td> <input type="text" class="input-large" id="first_name" placeholder="First Name"> </td>
+                        <td> <input type="text" class="input-large" id="last_name" placeholder="Last Name"> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="pull-right">
+                                <button class="btn btn-primary" id="save"><i class="icon-plus-sign icon-white"></i> Add</button>
+                                <button class="btn btn-danger" id="cancel"><i class="icon-trash icon-white"></i> Cancel</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
+
         <script src="../shared/jquery.js"></script>
         <script src='app.js'></script>
     </body>
