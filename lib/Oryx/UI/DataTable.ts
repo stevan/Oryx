@@ -91,6 +91,8 @@ module Oryx {
             }
 
             populate_row ( $row : JQuery, index : number, element : Oryx.Model.Resource ): void {
+                $row.data('oryx-id', element.id);
+
                 for ( var selector in this.binding_spec ) {
                     var property = this.binding_spec[ selector ];
                     if ( property.constructor == Function ) {
