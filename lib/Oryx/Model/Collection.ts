@@ -19,6 +19,12 @@ module Oryx {
                 this.trigger( 'add', this, (this.resources.length - 1), resource );
             }
 
+            remove ( index : number ): void {
+                var resource = this.resources[ index ];
+                delete this.resources[ index ];
+                this.trigger( 'remove', this, index, resource );
+            }
+
             get ( index : number ): Resource { return this.resources[ index ] }
 
             getById ( id : string ): Resource {
