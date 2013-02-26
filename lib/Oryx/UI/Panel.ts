@@ -60,8 +60,11 @@ module Oryx {
                     var args = opts.outlets[ selector ];
                     o.push(
                         new Oryx.UI[ args.type ] ({
-                            element  : jQuery( selector ),
-                            property : args['prop']
+                            element     : jQuery( selector ),
+                            property    : args['prop'],
+                            formatter   : args['formatter'],
+                            transformer : args['transformer'],
+                            validator   : args['validator'],
                         })
                     );
                 }
