@@ -118,6 +118,11 @@ module Oryx {
                 this.trigger( 'populate_row', this, $row, index, element );
             }
 
+            record_for_node ( $node : JQuery ) : Oryx.Model.Resource {
+                var index = this.index_for_node($node);
+                return this.data_source.get( index );
+            }
+
             index_for_node ( $node : JQuery ) : number {
                 return $node.closest( this.row_selector ).index();
             }
