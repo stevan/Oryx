@@ -111,6 +111,14 @@ module Oryx {
                 this.$element().val( value == undefined ? "" : value );
             }
 
+            show_error (): void {
+                this.$element().closest('.control-group').addClass('error');
+            }
+
+            clear_error (): void {
+                this.$element().closest('.control-group').removeClass('error');
+            }
+
             // target handlers
 
             register_target_event (): void {
