@@ -40,7 +40,7 @@ class PersonController {
     public table = new Oryx.UI.DataTable ({
         keyboard_nav  : true,
         select_by_row : true,
-        table_body    : '#table_view tbody',
+        table_body    : 'table tbody',
         row_selector  : 'tr',
         binding_spec  : {
             '.first_name' : 'first_name',
