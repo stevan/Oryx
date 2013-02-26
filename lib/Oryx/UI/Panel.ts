@@ -54,11 +54,12 @@ module Oryx {
             }
 
             static inflate ( opts : { outlets : Object; actions : Object; } ): Oryx.UI.Panel {
-                var o = [], a = [];
+                var outlets = [],
+                    actions = [];
 
                 for ( var selector in opts.outlets ) {
                     var args = opts.outlets[ selector ];
-                    o.push(
+                    outlets.push(
                         new Oryx.UI[ args.type ] ({
                             element     : jQuery( selector ),
                             property    : args['prop'],
@@ -71,7 +72,7 @@ module Oryx {
 
                 for ( var selector in opts.actions ) {
                     var args = opts.actions[ selector ];
-                    a.push(
+                    actions.push(
                         new Oryx.UI[ args.type ] ({
                             element       : jQuery( selector ),
                             event_type    : args['event'],
@@ -81,7 +82,7 @@ module Oryx {
                     );
                 }
 
-                return new Oryx.UI.Panel ({ outlets : o, actions : a });
+                return new Oryx.UI.Panel ({ outlets : outlets, actions : actions });
             }
         }
     }
