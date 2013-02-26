@@ -29,8 +29,16 @@ class PersonController {
 
     public view = Oryx.UI.Panel.inflate({
         outlets : {
-            '#first_name' : { type: 'Textbox',  prop: 'first_name' },
-            '#last_name'  : { type: 'Textbox',  prop: 'last_name'  }
+            '#first_name' : {
+                type      : 'Textbox',
+                prop      : 'first_name',
+                validator : function (value) { return value !== "" },
+            },
+            '#last_name'  : {
+                type      : 'Textbox',
+                prop      : 'last_name',
+                validator : function (value) { return value !== "" },
+            }
         },
         actions : {
             '.delete' : { type: 'Button', event: 'click', action: 'delete_person' },
