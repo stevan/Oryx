@@ -118,6 +118,10 @@ module Oryx {
                 this.trigger( 'populate_row', this, $row, index, element );
             }
 
+            index_for_node ( $node : JQuery ) : number {
+                return $node.closest( this.row_selector ).index();
+            }
+
             clear_selection (): void {
                 this.$table.find( this.row_selector ).removeClass( 'selected' );
                 this.trigger( 'clear:selected' );
