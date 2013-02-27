@@ -82,7 +82,11 @@
     </script>
 
     <script id="quantity-template" type="text/x-handlebars-template">
-        <input type="text" class="input-small" name="quantity" value="{{quantity}}" placeholder="Qty" />
+        <span name="quantity">{{quantity}}</span>
+        <div class="btn-group">
+            <button class="btn btn-mini" name="up"><i class="icon-chevron-up"></i></button>
+            <button class="btn btn-mini" name="down"><i class="icon-chevron-down"></i></button>
+        </div>
     </script>
 
     <script id="available-template" type="text/x-handlebars-template">

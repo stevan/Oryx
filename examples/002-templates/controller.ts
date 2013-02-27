@@ -21,17 +21,27 @@ class OrderController {
                     type : 'Textbox',
                     prop : 'description',
                 },
-                'input[name=quantity]' : {
-                    type : 'Textbox',
+                'span[name=quantity]' : {
+                    type : 'Label',
                     prop : 'quantity',
                 },
             },
             actions : {
                 'button[name=add]'    : {
-                    type              : 'Button',
-                    event             : 'click',
-                    action            : 'add_product',
-                    validate_props    : '*',
+                    type           : 'Button',
+                    event          : 'click',
+                    action         : 'add_product',
+                    validate_props : '*',
+                },
+                'button[name=up]' : {
+                    type   : 'Button',
+                    event  : 'click',
+                    action : 'increase_quantity',
+                },
+                'button[name=down]' : {
+                    type   : 'Button',
+                    event  : 'click',
+                    action : 'decrease_quantity',
                 },
             }
         });
@@ -76,6 +86,26 @@ class OrderController {
         jQuery('tfoot .quantity .controls span').html( this.templates.quantity(this.current_product.pack()) );
 
         this.view.set_data_source( this.current_product );
+    }
+
+    private change_quantity (e, delta : number) {
+        var product = this.table.resource_for_node(e.currentTarget);
+        var newQuantity = product.get('quantity') + delta;
+        if (newQuantity <= 0) {
+            return;
+        }
+
+        product.set({ quantity: newQuantity });
+    }
+
+    increase_quantity (e) {
+        console.log(e);
+        this.change_quantity(e, +1);
+    }
+
+    decrease_quantity (e) {
+        console.log(e);
+        this.change_quantity(e, -1);
     }
 
     add_product () {
