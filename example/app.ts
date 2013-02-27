@@ -62,10 +62,10 @@ class PersonController {
     constructor() {
         this.view.set_responder( this );
         this.table.set_data_source( this.persons );
-        this.initialize_new_resource();
+        this.initialize_new_person();
     }
 
-    private initialize_new_resource () {
+    private initialize_new_person () {
         this.idSerial += 1;
 
         this.current_person = new Person (this.idSerial, {
@@ -83,7 +83,7 @@ class PersonController {
     add_person ( e ) {
         var p = this.current_person;
         this.persons.add( p );
-        this.initialize_new_resource();
+        this.initialize_new_person();
         console.log( this.persons );
     }
 
