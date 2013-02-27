@@ -103,7 +103,7 @@ module Oryx {
                                     is_valid = false;
                                 }
 
-                                if (old_validator && old_validator(outlet) !== true) {
+                                if (old_validator && old_validator(source) !== true) {
                                     is_valid = false;
                                 }
 
