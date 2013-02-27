@@ -1,0 +1,40 @@
+tbody tr.selected td {
+    background-color: #dff0d8 !important;
+}
+
+.control-group, .controls, input {
+    margin-bottom: 0 !important;
+}
+tbody td {
+    vertical-align: middle !important;
+}
+
+thead th:nth-child(1), thead th:nth-child(2) {
+    width: 249px;
+}
+
+tfoot td {
+    border-top-width: 2px !important;
+}
+
+body {
+    padding: 1em !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.alert {
+    margin: 5px 0 0 0 !important;
+}
+
+.oryx {
+    font-weight: bold;
+}
+
+.♥ {
+    color: red;
+    font-size: 1.5em;
+}
+
