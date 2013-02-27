@@ -46,5 +46,9 @@ interface IOrder {
 
 class Order extends Oryx.Model.Resource {
     constructor ( id : string, body : IOrder ) { super( id, body ) }
+
+    addProduct ( product : Product ): void {
+        this.get("products").add(product);
+    }
 }
 
