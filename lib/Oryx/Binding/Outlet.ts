@@ -148,8 +148,12 @@ module Oryx {
 
             show_error (result : any): void {
                 this.$element().closest('.control-group').addClass('error');
-                if (result && this.error_element) {
+
+                if (result && this.error_element && this.error_element.length) {
                     this.error_element.addClass("error").text(result);
+                }
+                else {
+                    console.warn("unreported validation error in", this, result);
                 }
             }
 
