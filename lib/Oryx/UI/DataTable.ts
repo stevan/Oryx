@@ -78,7 +78,7 @@ module Oryx {
 
             reload (): void {
                 this.init();
-                this.trigger( 'reloaded', this );
+                this.fire( 'reloaded', this );
             }
 
             add_new_row ( index : number ): void {
@@ -117,12 +117,12 @@ module Oryx {
                         function () {
                             jQuery( this ).siblings().removeClass( 'selected' );
                             jQuery( this ).addClass( 'selected' );
-                            self.trigger( 'selected', index );
+                            self.fire( 'selected', index );
                         }
                     );
                 }
 
-                this.trigger( 'populate_row', this, $row, index, element );
+                this.fire( 'populate_row', this, $row, index, element );
             }
 
             record_for_node ( node ) : Oryx.Model.Resource {
@@ -136,7 +136,7 @@ module Oryx {
 
             clear_selection (): void {
                 this.$table.find( this.row_selector ).removeClass( 'selected' );
-                this.trigger( 'clear:selected' );
+                this.fire( 'clear:selected' );
             }
 
             move_selection_up (): void {
@@ -145,9 +145,9 @@ module Oryx {
                     var $prev = $row.prev();
                     if ( $prev.length != 0 ) {
                         $row.removeClass( 'selected' );
-                        this.trigger( 'clear:selected' );
+                        this.fire( 'clear:selected' );
                         $prev.addClass( 'selected' );
-                        this.trigger( 'selected', $prev.index() );
+                        this.fire( 'selected', $prev.index() );
                     }
                 }
             }
@@ -158,9 +158,9 @@ module Oryx {
                     var $next = $row.next();
                     if ( $next.length != 0 ) {
                         $row.removeClass( 'selected' );
-                        this.trigger( 'clear:selected' );
+                        this.fire( 'clear:selected' );
                         $next.addClass( 'selected' );
-                        this.trigger( 'selected', $next.index() );
+                        this.fire( 'selected', $next.index() );
                     }
                 }
             }

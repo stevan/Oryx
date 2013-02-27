@@ -22,7 +22,7 @@ module Oryx {
                 return this;
             }
 
-            trigger ( event_name : string, ...args : any[] ): IObservable {
+            fire ( event_name : string, ...args : any[] ): IObservable {
                 if ( this.callbacks[ event_name ] != undefined ) {
                     var callbacks = this.callbacks[ event_name ];
                     for ( var i = 0; i < callbacks.length; i++ ) {

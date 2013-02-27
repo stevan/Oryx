@@ -30,13 +30,13 @@ module Oryx {
             set_responder ( responder : Oryx.Binding.IActionTarget ): void {
                 this.responder = responder;
                 this.actions.map(( a ) => { a.set_target( this.responder ) });
-                this.trigger('update:responder', this);
+                this.fire('update:responder', this);
             }
 
             clear_responder (): void {
                 this.responder = undefined;
                 this.actions.map(( a ) => { a.clear_target() });
-                this.trigger('clear:responder', this);
+                this.fire('clear:responder', this);
             }
 
             get_data_source (): Oryx.Binding.IOutletTarget { return this.data_source; }
@@ -44,13 +44,13 @@ module Oryx {
             set_data_source ( data_source : Oryx.Binding.IOutletTarget ): void {
                 this.data_source = data_source;
                 this.outlets.map(( o ) => { o.set_target( this.data_source ) });
-                this.trigger('update:data_source', this);
+                this.fire('update:data_source', this);
             }
 
             clear_data_source (): void {
                 this.data_source = undefined;
                 this.outlets.map(( o ) => { o.clear_target() });
-                this.trigger('clear:data_source', this);
+                this.fire('clear:data_source', this);
             }
 
             static inflate ( opts : { outlets : Object; actions : Object; } ): Oryx.UI.Panel {

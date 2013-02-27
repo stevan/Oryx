@@ -26,7 +26,7 @@ class MyTarget extends Oryx.Core.Observable implements Oryx.Binding.IOutletTarge
     set ( args ) {
         for (var k in args) {
             traverser.traverse_path_and_set( k, this, args[k] );
-            this.trigger('update:' + k, this, args[k]);
+            this.fire('update:' + k, this, args[k]);
         }
         return this;
     }

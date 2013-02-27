@@ -16,13 +16,13 @@ module Oryx {
 
             add ( resource : Resource ): void {
                 this.resources.push( resource );
-                this.trigger( 'add', this, (this.resources.length - 1), resource );
+                this.fire( 'add', this, (this.resources.length - 1), resource );
             }
 
             remove ( index : number ): void {
                 var resource = this.resources[ index ];
                 this.resources.splice(index, 1);
-                this.trigger( 'remove', this, index, resource );
+                this.fire( 'remove', this, index, resource );
             }
 
             get ( index : number ): Resource { return this.resources[ index ] }
@@ -42,7 +42,7 @@ module Oryx {
 
             set ( index : number, resource : Resource ): void {
                 this.resources[ index ] = resource;
-                this.trigger( 'update:' + index, this, index, resource );
+                this.fire( 'update:' + index, this, index, resource );
             }
 
             map ( f : ( r : Resource ) => any ) {

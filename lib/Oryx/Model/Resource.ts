@@ -25,9 +25,9 @@ module Oryx {
             set ( updates : Object ): Resource {
                 for (var k in updates) {
                     traverser.traverse_path_and_set( k, this.body, updates[ k ], k );
-                    this.trigger( 'update:' + k, this, updates[ k ] );
+                    this.fire( 'update:' + k, this, updates[ k ] );
                 }
-                this.trigger('update', this, updates);
+                this.fire('update', this, updates);
                 return this;
             }
         }
