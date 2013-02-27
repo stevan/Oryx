@@ -32,12 +32,12 @@ class PersonController {
             'input[name=first_name]' : {
                 type      : 'Textbox',
                 prop      : 'first_name',
-                validator : function (value) { return value !== "" },
+                validator : function (value) { return value.match(/\S/) },
             },
             'input[name=last_name]'  : {
                 type      : 'Textbox',
                 prop      : 'last_name',
-                validator : function (value) { return value !== "" },
+                validator : function (value) { return value.match(/\S/) },
             }
         },
         actions : {
