@@ -24,8 +24,8 @@ function validate_name(value) : any {
     if (value === "") {
         return "Must not be blank.";
     }
-    else if (value.match(/\S/) === null) {
-        return "Must not be only whitespace.";
+    else if (value.match(/\s/)) {
+        return "Must not contain whitespace.";
     }
 
     return true;
