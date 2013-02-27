@@ -14,6 +14,8 @@ class Product extends Oryx.Model.Resource {
         this.bind('update:quantity', ( ) => {
             this.refresh_available( )
         });
+
+        this.refresh_available( )
     }
 
     refresh_available ( ) {
