@@ -43,7 +43,7 @@ class PersonController {
         actions : {
             '.delete' : { type: 'Button', event: 'click', action: 'delete_person' },
 
-            '#add'    : { type: 'Button', event: 'click', action: 'add_person' },
+            '#add'    : { type: 'Button', event: 'click', action: 'add_person', validate_props: '*' },
             '#cancel' : { type: 'Button', event: 'click', action: 'cancel_edit' }
         }
     });
