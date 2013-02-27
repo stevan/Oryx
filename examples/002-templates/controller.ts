@@ -23,6 +23,10 @@ class OrderController {
             table_body    : 'tbody',
             row_selector  : 'tr',
             binding_spec  : {
+                '.sku'         : this.renderer_for('sku'),
+                '.description' : this.renderer_for('description'),
+                '.quantity'    : this.renderer_for('quantity'),
+                '.available'   : this.renderer_for('available'),
             }
         });
     }
@@ -37,6 +41,14 @@ class OrderController {
 
         this.table = this.initialize_table();
         this.view  = this.initialize_view();
+    }
+
+    renderer_for (prop : string) {
+        var templates = this.templates;
+        return function (node, product) {
+            var content = templates[prop](product.pack());
+            node.html(content);
+        }
     }
 
     extract_templates() {
