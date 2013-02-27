@@ -1,4 +1,5 @@
 /// <reference path="model.ts" />
+/// <reference path="handlebars.d.ts" />
 /// <reference path="../../shared/jquery.d.ts" />
 /// <reference path="../../lib/Oryx.ts" />
 

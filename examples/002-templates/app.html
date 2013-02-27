@@ -73,7 +73,24 @@
         </div>
     </body>
 
+    <script id="sku-template" type="text/x-handlebars-template">
+        <a href="#">{{sku}}</a>
+    </script>
+
+    <script id="description-template" type="text/x-handlebars-template">
+        <input type="text" value="{{description}}" class="input-block-level" />
+    </script>
+
+    <script id="quantity-template" type="text/x-handlebars-template">
+        <input type="text" value="{{quantity}}" class="input-block-level" />
+    </script>
+
+    <script id="available-template" type="text/x-handlebars-template">
+        {{#if available}}✔{{else}}✗{{/if}}
+    </script>
+
     <script src="../../shared/jquery.js"></script>
+    <script src="handlebars.js"></script>
     <script src="controller.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
