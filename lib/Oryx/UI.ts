@@ -13,6 +13,8 @@ module Oryx {
 
         export class Textbox extends Oryx.Binding.Outlet {}
 
+        export class Textarea extends Oryx.Binding.Outlet {}
+
         export class Label extends Oryx.Binding.Outlet {
             register_element_event (): void {}; // it cannot be edited
             get_element_value (): string { return this.$element().html() }
