@@ -39,20 +39,30 @@ class PersonController {
     public view = Oryx.UI.Panel.inflate({
         outlets : {
             'input[name=first_name]' : {
-                type      : 'Textbox',
-                prop      : 'first_name',
-                validator : validate_name,
+                type          : 'Textbox',
+                prop          : 'first_name',
+                validator     : validate_name,
+                error_element : '.first-name-message',
             },
             'input[name=last_name]'  : {
-                type      : 'Textbox',
-                prop      : 'last_name',
-                validator : validate_name,
+                type          : 'Textbox',
+                prop          : 'last_name',
+                validator     : validate_name,
+                error_element : '.last-name-message',
             }
         },
         actions : {
             'button[name=delete]' : { type: 'Button', event: 'click', action: 'delete_person' },
 
-            'button[name=add]'    : { type: 'Button', event: 'click', action: 'add_person', validate_props: '*' },
+            'button[name=add]'    : {
+                type              : 'Button',
+                event             : 'click',
+                action            : 'add_person',
+                validate_props    : '*',
+                validator         : 'validate_person',
+                error_element     : '.first-name-message',
+            },
+
             'button[name=cancel]' : { type: 'Button', event: 'click', action: 'initialize_new_person' }
         }
     });
@@ -97,6 +107,17 @@ class PersonController {
         this.initialize_new_person();
 
         console.log( "Hello " + (this.persons.map((p) => { return p.get('first_name') } ).join(", ")));
+    }
+
+    validate_person ( ) : any {
+        var p = this.current_person;
+        var full_name = p.get("first_name") + p.get("last_name");
+
+        if (full_name.length >= 12) {
+            return "Oryx is limited to people whose full name is less than 12 letters long.";
+        }
+
+        return true;
     }
 }
 

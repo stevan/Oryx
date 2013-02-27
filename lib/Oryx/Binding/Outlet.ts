@@ -2,12 +2,13 @@ module Oryx {
     export module Binding {
         export class Outlet {
 
-            public element     : JQuery;
-            public property    : string;
-            public target      : IOutletTarget;
-            public transformer : ( x : any ) => any;
-            public formatter   : ( x : any ) => any;
-            public validator   : ( x : any ) => any;
+            public element       : JQuery;
+            public property      : string;
+            public target        : IOutletTarget;
+            public transformer   : ( x : any ) => any;
+            public formatter     : ( x : any ) => any;
+            public validator     : ( x : any ) => any;
+            public error_element : JQuery;
 
             public element_event;
             public target_event;
@@ -19,13 +20,15 @@ module Oryx {
                 transformer?   : ( x : any ) => any;
                 formatter?     : ( x : any ) => any;
                 validator?     : ( x : any ) => any;
+                error_element? : JQuery;
             } ) {
-                this.element     = opts.element;
-                this.property    = opts.property;
-                this.target      = <IOutletTarget> opts.target;
-                this.transformer = opts.transformer;
-                this.formatter   = opts.formatter;
-                this.validator   = opts.validator;
+                this.element       = opts.element;
+                this.property      = opts.property;
+                this.target        = <IOutletTarget> opts.target;
+                this.transformer   = opts.transformer;
+                this.formatter     = opts.formatter;
+                this.validator     = opts.validator;
+                this.error_element = opts.error_element;
 
                 this.element_event = () => { this.update_target() };
                 this.target_event  = () => { this.update_element.apply( this, arguments ) }
@@ -145,14 +148,16 @@ module Oryx {
 
             show_error (result : any): void {
                 this.$element().closest('.control-group').addClass('error');
-                if (result) {
-                    this.$element().closest('.control-group').find('.error-message').text(result);
+                if (result && this.error_element) {
+                    this.error_element.removeClass("hidden").text(result);
                 }
             }
 
             clear_error (): void {
                 this.$element().closest('.control-group').removeClass('error');
-                this.$element().closest('.control-group').find('.error-message').text("");
+                if (this.error_element) {
+                    this.error_element.addClass("hidden").text("");
+                }
             }
 
             // target handlers

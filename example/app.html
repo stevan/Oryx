@@ -29,6 +29,14 @@
                 color: red;
                 font-size: 1.5em;
             }
+
+            .hidden {
+                display: none !important;
+            }
+
+            .alert {
+                margin: 5px 0 0 0 !important;
+            }
         </style>
     </head>
     <body>
@@ -59,17 +67,17 @@
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="text" class="input-block-level" name="first_name" placeholder="First Name">
-                                        <span class="help-block error-message"></span>
                                     </div>
                                 </div>
+                                <div class="hidden alert alert-error first-name-message"></div>
                             </td>
                             <td>
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="text" class="input-block-level" name="last_name" placeholder="Last Name">
-                                        <span class="help-block error-message"></span>
                                     </div>
                                 </div>
+                                <div class="hidden alert alert-error last-name-message"></div>
                             </td>
                             <td>
                                 <div class="btn-group">

@@ -8,6 +8,7 @@ module Oryx {
             public target_action : string;
             public element_event : ( e : JQueryEventObject ) => void;
             public validator     : ( x : Object ) => any;
+            public error_element : JQuery;
 
             constructor ( opts : {
                 element        : JQuery;
@@ -15,6 +16,7 @@ module Oryx {
                 target?        : Object;
                 target_action? : string;
                 validator?     : ( x : Object ) => any;
+                error_element? : JQuery;
             } ) {
                 this.element       = opts.element;
                 this.event_type    = opts.event_type;
@@ -22,6 +24,7 @@ module Oryx {
                 this.target_action = opts.target_action;
                 this.element_event = ( e ) => { this.call_target_action( e ) };
                 this.validator     = opts.validator;
+                this.error_element = opts.error_element;
 
                 this.setup();
             }
@@ -63,12 +66,27 @@ module Oryx {
                 this.$element().unbind( this.event_type, this.element_event );
             }
 
+            show_error ( result: any ) {
+                if (result && this.error_element) {
+                    this.error_element.removeClass("hidden").text(result);
+                }
+            }
+
+            clear_error ( ) {
+                if (this.error_element) {
+                    this.error_element.addClass("hidden").text("");
+                }
+            }
+
             call_target_action ( e : JQueryEventObject ): void {
                 if ( this.validator ) {
-                    if (this.validator( this.target ) !== true) {
+                    var validation = this.validator( this.target );
+                    if (validation !== true) {
+                        this.show_error(validation);
                         return;
                     }
                 }
+                this.clear_error();
 
                 // XXX - maybe this should throw an error??
                 if ( this.target                     == undefined ) return;

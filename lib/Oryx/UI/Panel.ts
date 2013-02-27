@@ -62,11 +62,12 @@ module Oryx {
                     var args = opts.outlets[ selector ];
 
                     var outlet = new Oryx.UI[ args.type ] ({
-                        element     : jQuery( selector ),
-                        property    : args['prop'],
-                        formatter   : args['formatter'],
-                        transformer : args['transformer'],
-                        validator   : args['validator'],
+                        element       : jQuery( selector ),
+                        property      : args['prop'],
+                        formatter     : args['formatter'],
+                        transformer   : args['transformer'],
+                        validator     : args['validator'],
+                        error_element : jQuery( args['error_element'] ),
                     });
 
                     outlets.push(outlet);
@@ -122,10 +123,11 @@ module Oryx {
 
                     actions.push(
                         new Oryx.UI[ args.type ] ({
-                            element       : jQuery( selector ),
-                            event_type    : args['event'],
-                            target_action : args['action'],
-                            validator     : validator,
+                            element           : jQuery( selector ),
+                            event_type        : args['event'],
+                            target_action     : args['action'],
+                            validator         : validator,
+                            error_element     : jQuery( args['error_element'] ),
                         })
                     );
                 }
