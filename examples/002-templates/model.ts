@@ -4,7 +4,7 @@ interface IProduct {
     sku         : string;
     description : string;
     quantity    : number;
-    available   : bool;
+    available?  : bool;
 }
 
 class Product extends Oryx.Model.Resource {
