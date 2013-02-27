@@ -55,29 +55,69 @@ module Oryx {
 
             static inflate ( opts : { outlets : Object; actions : Object; } ): Oryx.UI.Panel {
                 var outlets = [],
-                    actions = [];
+                    actions = [],
+                    outlets_by_prop = {};
 
                 for ( var selector in opts.outlets ) {
                     var args = opts.outlets[ selector ];
-                    outlets.push(
-                        new Oryx.UI[ args.type ] ({
-                            element     : jQuery( selector ),
-                            property    : args['prop'],
-                            formatter   : args['formatter'],
-                            transformer : args['transformer'],
-                            validator   : args['validator'],
-                        })
-                    );
+
+                    var outlet = new Oryx.UI[ args.type ] ({
+                        element     : jQuery( selector ),
+                        property    : args['prop'],
+                        formatter   : args['formatter'],
+                        transformer : args['transformer'],
+                        validator   : args['validator'],
+                    });
+
+                    outlets.push(outlet);
+                    outlets_by_prop[ args['prop'] ] = outlet;
                 }
 
                 for ( var selector in opts.actions ) {
-                    var args = opts.actions[ selector ];
+                    var args      = opts.actions[ selector ],
+
+                    /* some actions need properties to be valid to
+                       be able to run. this chunk of code wraps up
+                       a bunch of validators together. we always
+                       want all the validators to run (because they
+                       might highlight erroneous fields) but we
+                       only want a simple valid/invalid response
+                       ... for now... */
+
+                    var validator = args['validator'];
+                    if (args['validate_props']) {
+                        if (args['validate_props'] === '*') {
+                            args['validate_props'] = outlets;
+                        }
+                        else {
+                            args['validate_props'] = args['validate_props'].map(( prop ) => { outlets_by_prop[prop] });
+                        }
+
+                        args['validate_props'].forEach(function (outlet) {
+                            var old_validator = validator;
+
+                            validator = function (source) {
+                                var is_valid = true;
+
+                                if (!outlet.validate_or_warn()) {
+                                    is_valid = false;
+                                }
+
+                                if (old_validator && !old_validator(outlet)) {
+                                    is_valid = false;
+                                }
+
+                                return is_valid;
+                            };
+                        });
+                    }
+
                     actions.push(
                         new Oryx.UI[ args.type ] ({
                             element       : jQuery( selector ),
                             event_type    : args['event'],
                             target_action : args['action'],
-                            validator     : args['validator'],
+                            validator     : validator,
                         })
                     );
                 }
