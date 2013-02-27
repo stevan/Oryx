@@ -74,14 +74,19 @@ class PersonController {
 
     delete_person ( e ) {
         var index = this.table.index_for_node(e.currentTarget);
+        var person = this.persons.get(index);
         this.persons.remove(index);
+
+        console.log( "Good bye, " + person.get('first_name') );
+        console.log( "Please don't leave me " + (this.persons.map((p) => { return p.get('first_name') } ).join(", ")));
     }
 
     add_person ( e ) {
         var p = this.current_person;
         this.persons.add( p );
         this.initialize_new_person();
-        console.log( this.persons );
+
+        console.log( "Hello " + (this.persons.map((p) => { return p.get('first_name') } ).join(", ")));
     }
 
     cancel_edit ( e ) {
