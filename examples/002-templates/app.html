@@ -34,7 +34,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td>
+                            <td class="sku">
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="text" class="input-block-level" name="sku" placeholder="SKU">
@@ -42,23 +42,23 @@
                                     <div class="alert alert-error sku-message"></div>
                                 </div>
                             </td>
-                            <td>
+                            <td class="description">
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input type="text" class="input-block-level" name="description" placeholder="Description">
+                                        <!-- will be replaced with description-template -->
                                     </div>
                                     <div class="alert alert-error description-message"></div>
                                 </div>
                             </td>
-                            <td>
+                            <td class="quantity">
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input type="text" class="input-small" name="quantity" placeholder="Qty">
+                                        <!-- will be replaced with quantity-template -->
                                     </div>
                                     <div class="alert alert-error quantity-message"></div>
                                 </div>
                             </td>
-                            <td>
+                            <td class="available">
                             </td>
                             <td>
                                 <div class="btn-group">
@@ -78,11 +78,11 @@
     </script>
 
     <script id="description-template" type="text/x-handlebars-template">
-        <input type="text" value="{{description}}" class="input-block-level" />
+        <input type="text" class="input-block-level" name="description" value="{{description}}" placeholder="Description" />
     </script>
 
     <script id="quantity-template" type="text/x-handlebars-template">
-        <input type="text" value="{{quantity}}" class="input-block-level" />
+        <input type="text" class="input-small" name="quantity" value="{{quantity}}" placeholder="Qty" />
     </script>
 
     <script id="available-template" type="text/x-handlebars-template">

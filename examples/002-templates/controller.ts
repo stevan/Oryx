@@ -52,6 +52,7 @@ class OrderController {
 
     constructor() {
         this.templates = {};
+        this.extract_templates();
 
         this.order = new Order(null, {
             name     : "New Order",
@@ -70,6 +71,10 @@ class OrderController {
             description: "",
             quantity: 0,
         });
+
+        jQuery('tfoot .description .controls').append( this.templates.description(this.current_product.pack()) );
+        jQuery('tfoot .quantity .controls').append( this.templates.quantity(this.current_product.pack()) );
+
         this.view.set_data_source( this.current_product );
     }
 
@@ -95,7 +100,6 @@ class OrderController {
     }
 
     bind() {
-        this.extract_templates();
         this.view.set_responder( this );
         this.table.set_data_source( this.order.get("products") );
     }
