@@ -86,7 +86,11 @@
     </script>
 
     <script id="available-template" type="text/x-handlebars-template">
-        {{#if available}}✔{{else}}✗{{/if}}
+        {{#if available}}
+            <span class="product-available">✔</span>
+        {{else}}
+            <span class="product-unavailable">✗</span>
+        {{/if}}
     </script>
 
     <script src="../../shared/jquery.js"></script>

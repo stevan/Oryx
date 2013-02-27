@@ -14,3 +14,24 @@ body {
     display: block;
 }
 
+tfoot td {
+    border-top-width: 2px !important;
+}
+
+tbody td {
+    vertical-align: middle;
+}
+
+td.available {
+    text-align: center;
+}
+
+.product-available {
+    font-weight: bold;
+    color: green;
+}
+
+.product-unavailable {
+    font-weight: bold;
+    color: red;
+}
