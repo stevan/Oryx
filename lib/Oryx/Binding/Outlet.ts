@@ -149,14 +149,14 @@ module Oryx {
             show_error (result : any): void {
                 this.$element().closest('.control-group').addClass('error');
                 if (result && this.error_element) {
-                    this.error_element.removeClass("hidden").text(result);
+                    this.error_element.addClass("error").text(result);
                 }
             }
 
             clear_error (): void {
                 this.$element().closest('.control-group').removeClass('error');
                 if (this.error_element) {
-                    this.error_element.addClass("hidden").text("");
+                    this.error_element.removeClass("error").text("");
                 }
             }
 

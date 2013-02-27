@@ -21,10 +21,6 @@ body {
     padding: 1em !important;
 }
 
-.hidden {
-    display: none !important;
-}
-
 .alert {
     margin: 5px 0 0 0 !important;
 }
@@ -36,5 +32,13 @@ body {
 .♥ {
     color: red;
     font-size: 1.5em;
+}
+
+.control-group .alert {
+    display: none;
+}
+
+.control-group .alert.error {
+    display: block;
 }
 
