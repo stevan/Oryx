@@ -42,7 +42,7 @@ class PersonController {
             'button[name=delete]' : { type: 'Button', event: 'click', action: 'delete_person' },
 
             'button[name=add]'    : { type: 'Button', event: 'click', action: 'add_person', validate_props: '*' },
-            'button[name=cancel]' : { type: 'Button', event: 'click', action: 'cancel_edit' }
+            'button[name=cancel]' : { type: 'Button', event: 'click', action: 'initialize_new_person' }
         }
     });
 
@@ -63,7 +63,7 @@ class PersonController {
         this.initialize_new_person();
     }
 
-    private initialize_new_person () {
+    initialize_new_person () {
         this.current_person = new Person (null, {
             first_name : "",
             last_name  : ""
@@ -86,11 +86,6 @@ class PersonController {
         this.initialize_new_person();
 
         console.log( "Hello " + (this.persons.map((p) => { return p.get('first_name') } ).join(", ")));
-    }
-
-    cancel_edit ( e ) {
-        jQuery('.error').removeClass('error');
-        this.current_person.set({ first_name : "", last_name : "" })
     }
 }
 
