@@ -27,6 +27,12 @@ class OrderController {
                 },
             },
             actions : {
+                'button[name=add]'    : {
+                    type              : 'Button',
+                    event             : 'click',
+                    action            : 'add_product',
+                    validate_props    : '*',
+                },
             }
         });
     }
@@ -65,6 +71,12 @@ class OrderController {
             quantity: 0,
         });
         this.view.set_data_source( this.current_product );
+    }
+
+    add_product () {
+        var p = this.current_product;
+        this.order.addProduct( p );
+        this.initialize_new_product();
     }
 
     renderer_for (prop : string) {
