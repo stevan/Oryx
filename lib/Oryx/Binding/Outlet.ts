@@ -145,10 +145,14 @@ module Oryx {
 
             show_error (result : any): void {
                 this.$element().closest('.control-group').addClass('error');
+                if (result) {
+                    this.$element().closest('.control-group').find('.error-message').text(result);
+                }
             }
 
             clear_error (): void {
                 this.$element().closest('.control-group').removeClass('error');
+                this.$element().closest('.control-group').find('.error-message').text("");
             }
 
             // target handlers
