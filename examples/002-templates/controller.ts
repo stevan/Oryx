@@ -13,6 +13,18 @@ class OrderController {
     initialize_view() {
         return Oryx.UI.Panel.inflate({
             outlets : {
+                'input[name=sku]' : {
+                    type : 'Textbox',
+                    prop : 'sku',
+                },
+                'input[name=description]' : {
+                    type : 'Textbox',
+                    prop : 'description',
+                },
+                'input[name=quantity]' : {
+                    type : 'Textbox',
+                    prop : 'quantity',
+                },
             },
             actions : {
             }
