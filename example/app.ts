@@ -29,12 +29,12 @@ class PersonController {
 
     public view = Oryx.UI.Panel.inflate({
         outlets : {
-            '#first_name' : {
+            'input[name=first_name]' : {
                 type      : 'Textbox',
                 prop      : 'first_name',
                 validator : function (value) { return value !== "" },
             },
-            '#last_name'  : {
+            'input[name=last_name]'  : {
                 type      : 'Textbox',
                 prop      : 'last_name',
                 validator : function (value) { return value !== "" },
