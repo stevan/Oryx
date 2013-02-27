@@ -110,8 +110,9 @@ module Oryx {
                                     is_valid = false;
                                 }
 
-                                if (old_validator && old_validator(source) !== true) {
-                                    is_valid = false;
+                                var validation = old_validator(source);
+                                if (old_validator && validation !== true) {
+                                    return validation;
                                 }
 
                                 return is_valid;
