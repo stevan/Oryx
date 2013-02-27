@@ -74,7 +74,7 @@ module Oryx {
                 }
 
                 for ( var selector in opts.actions ) {
-                    var args      = opts.actions[ selector ],
+                    var args = opts.actions[ selector ];
 
                     /* some actions need properties to be valid to
                        be able to run. this chunk of code wraps up
