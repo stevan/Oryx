@@ -60,7 +60,7 @@ class PersonController {
                 action            : 'add_person',
                 validate_props    : '*',
                 validator         : 'validate_person',
-                error_element     : '.first-name-message',
+                error_element     : '.add-message',
             },
 
             'button[name=cancel]' : { type: 'Button', event: 'click', action: 'initialize_new_person' }
@@ -68,10 +68,8 @@ class PersonController {
     });
 
     public table = new Oryx.UI.DataTable ({
-        keyboard_nav  : true,
-        select_by_row : true,
-        table_body    : 'tbody',
-        row_selector  : 'tr',
+        table_body    : 'ol',
+        row_selector  : 'li',
         binding_spec  : {
             '.first_name' : 'first_name',
             '.last_name'  : 'last_name'

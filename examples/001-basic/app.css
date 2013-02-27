@@ -1,28 +1,13 @@
-tbody tr.selected td {
-    background-color: #dff0d8 !important;
-}
-
-.control-group, .controls, input {
-    margin-bottom: 0 !important;
-}
-tbody td {
-    vertical-align: middle !important;
-}
-
-thead th:nth-child(1), thead th:nth-child(2) {
-    width: 249px;
-}
-
-tfoot td {
-    border-top-width: 2px !important;
-}
-
 body {
     padding: 1em !important;
 }
 
-.alert {
-    margin: 5px 0 0 0 !important;
+ol {
+    list-style-type: none;
+}
+
+li + li {
+    margin-top: .5em;
 }
 
 .oryx {
@@ -34,11 +19,11 @@ body {
     font-size: 1.5em;
 }
 
-.control-group .alert {
+.alert {
     display: none;
 }
 
-.control-group .alert.error {
+.alert.error {
     display: block;
 }
 

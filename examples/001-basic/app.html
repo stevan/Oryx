@@ -8,53 +8,38 @@
     </head>
     <body>
         <div class="row">
-            <div class="span8">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="first_name"></td>
-                            <td class="last_name"></td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-small btn-danger" name="delete"><i class="icon-trash icon-white"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <input type="text" class="input-block-level" name="first_name" placeholder="First Name">
-                                    </div>
-                                    <div class="alert alert-error first-name-message"></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <input type="text" class="input-block-level" name="last_name" placeholder="Last Name">
-                                    </div>
-                                    <div class="alert alert-error last-name-message"></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-small btn-primary" name="add"><i class="icon-plus-sign icon-white"></i></button>
-                                    <button class="btn btn-small btn-danger" name="cancel"><i class="icon-trash icon-white"></i></button>
-                                </span>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+            <div class="span6">
+                <ol>
+                    <li>
+                        <div class="btn-group">
+                            <button class="btn btn-small btn-danger" name="delete"><i class="icon-trash icon-white"></i></button>
+                        </div>
+
+                        <span class="first_name"></span>
+                        <span class="last_name"></span>
+                    </li>
+                </ol>
+
+                <div class="form well">
+                    <div class="alert alert-error add-message"></div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="input-block-level" name="first_name">
+                        </div>
+                        <div class="alert alert-error first-name-message"></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="input-block-level" name="last_name">
+                        </div>
+                        <div class="alert alert-error last-name-message"></div>
+                    </div>
+                    <button class="btn btn-primary" name="add"><i class="icon-plus-sign icon-white"></i> Add</button>
+                    <button class="btn btn-danger" name="cancel"><i class="icon-trash icon-white"></i> Reset</button>
+                </div>
             </div>
         </div>
 
@@ -65,8 +50,6 @@
     <script src="../../shared/jquery.js"></script>
     <script src="app.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            new PersonController().bind();
-        });
+        $(function () { new PersonController().bind() });
     </script>
 </html>
