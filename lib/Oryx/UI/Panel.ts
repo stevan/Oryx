@@ -42,15 +42,21 @@ module Oryx {
             get_data_source (): Oryx.Binding.IOutletTarget { return this.data_source; }
 
             set_data_source ( data_source : Oryx.Binding.IOutletTarget ): void {
+                this.clear_errors();
                 this.data_source = data_source;
                 this.outlets.map(( o ) => { o.set_target( this.data_source ) });
                 this.fire('update:data_source', this);
             }
 
             clear_data_source (): void {
+                this.clear_errors();
                 this.data_source = undefined;
                 this.outlets.map(( o ) => { o.clear_target() });
                 this.fire('clear:data_source', this);
+            }
+
+            clear_errors () {
+                jQuery('.error').removeClass('error');
             }
 
             static inflate ( opts : { outlets : Object; actions : Object; } ): Oryx.UI.Panel {
