@@ -53,6 +53,7 @@ module Oryx {
                 if ( this.target != undefined ) {
                     this.unregister_all_events();
                     this.target = undefined;
+                    this.clear_error();
                     this.set_element_value('');
                 }
             }
