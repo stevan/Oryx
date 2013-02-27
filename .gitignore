@@ -1,6 +1,1 @@
-lib/*.js
-shared/*.js
-t/*.js
-t/*/*.js
-shared/tsUnit.d.ts
-examples/*/app.js
+*.js
