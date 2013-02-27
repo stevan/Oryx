@@ -79,9 +79,12 @@ class PersonController {
     });
 
     constructor() {
+        this.initialize_new_person();
+    }
+
+    bind() {
         this.view.set_responder( this );
         this.table.set_data_source( this.persons );
-        this.initialize_new_person();
     }
 
     initialize_new_person () {
@@ -120,7 +123,3 @@ class PersonController {
         return true;
     }
 }
-
-$(document).ready(function () {
-    var e = new PersonController ();
-});
