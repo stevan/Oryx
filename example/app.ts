@@ -88,6 +88,7 @@ class PersonController {
     }
 
     cancel_edit ( e ) {
+        jQuery('.error').removeClass('error');
         this.current_person.set({ first_name : "", last_name : "" })
     }
 }
