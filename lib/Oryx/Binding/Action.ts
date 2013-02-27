@@ -55,6 +55,7 @@ module Oryx {
 
             clear_target (): void {
                 this.unregister_element_event();
+                this.clear_error();
                 this.target = undefined;
             }
 
