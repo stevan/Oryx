@@ -24,12 +24,10 @@ class OrderController {
             name     : "New Order",
             products : new Products(),
         });
-        console.log(this.order);
     }
 
     bind() {
         this.view.set_responder( this );
-        // this.table.set_data_source( this.order.get("products") );
+        this.table.set_data_source( this.order.get("products") );
     }
-
 }
