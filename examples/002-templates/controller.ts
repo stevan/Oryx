@@ -72,8 +72,8 @@ class OrderController {
             quantity    : 1,
         });
 
-        jQuery('tfoot .description .controls').append( this.templates.description(this.current_product.pack()) );
-        jQuery('tfoot .quantity .controls').append( this.templates.quantity(this.current_product.pack()) );
+        jQuery('tfoot .description .controls span').html( this.templates.description(this.current_product.pack()) );
+        jQuery('tfoot .quantity .controls span').html( this.templates.quantity(this.current_product.pack()) );
 
         this.view.set_data_source( this.current_product );
     }
