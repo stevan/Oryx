@@ -1,7 +1,9 @@
+/// <reference path="model.ts" />
 /// <reference path="../../shared/jquery.d.ts" />
 /// <reference path="../../lib/Oryx.ts" />
 
 class OrderController {
+    public order;
 
     public view = Oryx.UI.Panel.inflate({
         outlets : {
@@ -18,6 +20,11 @@ class OrderController {
     });
 
     constructor() {
+        this.order = new Order(null, {
+            name     : "New Order",
+            products : new Products(),
+        });
+        console.log(this.order);
     }
 
     bind() {
