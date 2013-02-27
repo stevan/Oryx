@@ -41,10 +41,10 @@ class PersonController {
             }
         },
         actions : {
-            '.delete' : { type: 'Button', event: 'click', action: 'delete_person' },
+            'button[name=delete]' : { type: 'Button', event: 'click', action: 'delete_person' },
 
-            '#add'    : { type: 'Button', event: 'click', action: 'add_person', validate_props: '*' },
-            '#cancel' : { type: 'Button', event: 'click', action: 'cancel_edit' }
+            'button[name=add]'    : { type: 'Button', event: 'click', action: 'add_person', validate_props: '*' },
+            'button[name=cancel]' : { type: 'Button', event: 'click', action: 'cancel_edit' }
         }
     });
 
