@@ -4,6 +4,7 @@
 /// <reference path="../../lib/Oryx.ts" />
 
 class OrderController {
+    public current_product : Product;
     public order : Order;
     public view;
     public table;
@@ -41,6 +42,17 @@ class OrderController {
 
         this.table = this.initialize_table();
         this.view  = this.initialize_view();
+
+        this.initialize_new_product();
+    }
+
+    initialize_new_product () {
+        this.current_product = new Product (null, {
+            sku: "",
+            description: "",
+            quantity: 0,
+        });
+        this.view.set_data_source( this.current_product );
     }
 
     renderer_for (prop : string) {
