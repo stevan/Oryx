@@ -25,7 +25,6 @@ class PersonController {
 
     public current_person : Person;
     public persons = new People();
-    public idSerial : any = 0;
 
     public view = Oryx.UI.Panel.inflate({
         outlets : {
@@ -66,9 +65,7 @@ class PersonController {
     }
 
     private initialize_new_person () {
-        this.idSerial += 1;
-
-        this.current_person = new Person (this.idSerial, {
+        this.current_person = new Person (null, {
             first_name : "",
             last_name  : ""
         });
