@@ -3,4 +3,4 @@ shared/*.js
 t/*.js
 t/*/*.js
 shared/tsUnit.d.ts
-example/app.js
+examples/*/app.js

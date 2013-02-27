@@ -1,5 +1,5 @@
-/// <reference path="../shared/jquery.d.ts" />
-/// <reference path="../lib/Oryx.ts" />
+/// <reference path="../../shared/jquery.d.ts" />
+/// <reference path="../../lib/Oryx.ts" />
 
 interface IPerson {
     first_name : string;

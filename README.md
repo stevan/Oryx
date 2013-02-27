@@ -15,11 +15,11 @@ and then load t/test.html in your browser of choice:
 
     open t/test.html
 
-To run the example, use this:
+To run the first example, use this:
 
-    tsc --out example/app.js example/app.ts
+    tsc --out examples/001-basic/app.js examples/001-basic/app.ts
 
-and then load the example/app.html in your browser of choice:
+and then load app.html in your browser of choice:
 
-    open example/app.html 
+    open examples/001-basic/app.html 
 
