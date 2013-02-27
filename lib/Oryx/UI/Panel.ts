@@ -85,6 +85,13 @@ module Oryx {
                        ... for now... */
 
                     var validator = args['validator'];
+                    if (typeof validator === "string") {
+                        var validator_method = validator;
+                        validator = function (source) {
+                            return source[validator_method]();
+                        };
+                    }
+
                     if (args['validate_props']) {
                         if (args['validate_props'] === '*') {
                             args['validate_props'] = outlets;
