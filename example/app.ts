@@ -1,5 +1,4 @@
 /// <reference path="../shared/jquery.d.ts" />
-/// <reference path="../shared/jquery.js" />
 /// <reference path="../lib/Oryx.ts" />
 
 interface IPerson {
