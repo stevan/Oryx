@@ -5,21 +5,27 @@
 
 class OrderController {
     public order : Order;
+    public view;
+    public table;
     public templates : any;
 
-    public view = Oryx.UI.Panel.inflate({
-        outlets : {
-        },
-        actions : {
-        }
-    });
+    initialize_view() {
+        return Oryx.UI.Panel.inflate({
+            outlets : {
+            },
+            actions : {
+            }
+        });
+    }
 
-    public table = new Oryx.UI.DataTable ({
-        table_body    : 'tbody',
-        row_selector  : 'tr',
-        binding_spec  : {
-        }
-    });
+    initialize_table() {
+        return new Oryx.UI.DataTable({
+            table_body    : 'tbody',
+            row_selector  : 'tr',
+            binding_spec  : {
+            }
+        });
+    }
 
     constructor() {
         this.templates = {};
@@ -28,6 +34,9 @@ class OrderController {
             name     : "New Order",
             products : new Products(),
         });
+
+        this.table = this.initialize_table();
+        this.view  = this.initialize_view();
     }
 
     extract_templates() {
