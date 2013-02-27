@@ -7,6 +7,70 @@
         <link rel="stylesheet" href="app.css">
     </head>
     <body>
+        <div class="row">
+            <div class="span8">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>SKU</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Available?</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sku"></td>
+                            <td class="description"></td>
+                            <td class="quantity"></td>
+                            <td class="available"></td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-small btn-danger" name="delete"><i class="icon-trash icon-white"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="text" class="input-block-level" name="sku" placeholder="SKU">
+                                    </div>
+                                    <div class="alert alert-error sku-message"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="text" class="input-block-level" name="description" placeholder="Description">
+                                    </div>
+                                    <div class="alert alert-error description-message"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="text" class="input-small" name="quantity" placeholder="Qty">
+                                    </div>
+                                    <div class="alert alert-error quantity-message"></div>
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-small btn-primary" name="add"><i class="icon-plus-sign icon-white"></i></button>
+                                    <button class="btn btn-small btn-danger" name="cancel"><i class="icon-trash icon-white"></i></button>
+                                </span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
     </body>
 
     <script src="../../shared/jquery.js"></script>
