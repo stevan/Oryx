@@ -67,9 +67,9 @@ class OrderController {
 
     initialize_new_product () {
         this.current_product = new Product (null, {
-            sku: "",
-            description: "",
-            quantity: 0,
+            sku         : "",
+            description : "",
+            quantity    : 1,
         });
 
         jQuery('tfoot .description .controls').append( this.templates.description(this.current_product.pack()) );
