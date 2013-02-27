@@ -4,10 +4,27 @@ interface IProduct {
     sku         : string;
     description : string;
     quantity    : number;
+    available   : bool;
 }
 
 class Product extends Oryx.Model.Resource {
-    constructor ( id : string, body : IProduct ) { super( id, body ) }
+    constructor ( id : string, body : IProduct ) {
+        super( id, body );
+
+        this.bind('update:quantity', ( ) => {
+            this.refresh_available( )
+        });
+    }
+
+    refresh_available ( ) {
+        var quantity = this.get('quantity');
+        if (quantity > 3) {
+            this.set({'available': false});
+        }
+        else {
+            this.set({'available': true});
+        }
+    }
 }
 
 class Products extends Oryx.Model.Collection {
