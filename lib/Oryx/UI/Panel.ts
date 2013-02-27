@@ -117,9 +117,11 @@ module Oryx {
                                     is_valid = false;
                                 }
 
-                                var validation = old_validator(source);
-                                if (old_validator && validation !== true) {
-                                    return validation;
+                                if (old_validator) {
+                                    var validation = old_validator(source);
+                                    if (validation !== true) {
+                                        return validation;
+                                    }
                                 }
 
                                 return is_valid;
