@@ -20,6 +20,17 @@ class People extends Oryx.Model.Collection {
     }
 }
 
+function validate_name(value) : any {
+    if (value === "") {
+        return "Must not be blank.";
+    }
+    else if (value.match(/\S/) === null) {
+        return "Must not be only whitespace.";
+    }
+
+    return true;
+}
+
 class PersonController {
 
     public current_person : Person;
@@ -30,12 +41,12 @@ class PersonController {
             'input[name=first_name]' : {
                 type      : 'Textbox',
                 prop      : 'first_name',
-                validator : (value) => { return value.match(/\S/) },
+                validator : validate_name,
             },
             'input[name=last_name]'  : {
                 type      : 'Textbox',
                 prop      : 'last_name',
-                validator : (value) => { return value.match(/\S/) },
+                validator : validate_name,
             }
         },
         actions : {

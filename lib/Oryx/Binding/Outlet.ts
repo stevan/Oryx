@@ -7,7 +7,7 @@ module Oryx {
             public target      : IOutletTarget;
             public transformer : ( x : any ) => any;
             public formatter   : ( x : any ) => any;
-            public validator   : ( x : any ) => bool;
+            public validator   : ( x : any ) => any;
 
             public element_event;
             public target_event;
@@ -18,7 +18,7 @@ module Oryx {
                 target?        : Object;
                 transformer?   : ( x : any ) => any;
                 formatter?     : ( x : any ) => any;
-                validator?     : ( x : any ) => bool;
+                validator?     : ( x : any ) => any;
             } ) {
                 this.element     = opts.element;
                 this.property    = opts.property;
@@ -74,8 +74,9 @@ module Oryx {
                         value = this.transformer( value );
                     }
 
-                    if (!this.validator( value )) {
-                        this.show_error();
+                    var validation = this.validator(value);
+                    if (validation !== true) {
+                        this.show_error(validation);
                         return false;
                     }
                 }
@@ -90,8 +91,9 @@ module Oryx {
                     value = this.transformer( value );
                 }
                 if ( this.validator ) {
-                    if (!this.validator( value )) {
-                        this.show_error();
+                    var validation = this.validator(value);
+                    if (validation !== true) {
+                        this.show_error(validation);
                     }
                     else {
                         this.clear_error();
@@ -141,7 +143,7 @@ module Oryx {
                 this.$element().val( value == undefined ? "" : value );
             }
 
-            show_error (): void {
+            show_error (result : any): void {
                 this.$element().closest('.control-group').addClass('error');
             }
 

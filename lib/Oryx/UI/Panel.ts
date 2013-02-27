@@ -99,11 +99,11 @@ module Oryx {
                             validator = function (source) {
                                 var is_valid = true;
 
-                                if (!outlet.validate_or_warn()) {
+                                if (outlet.validate_or_warn() !== true) {
                                     is_valid = false;
                                 }
 
-                                if (old_validator && !old_validator(outlet)) {
+                                if (old_validator && old_validator(outlet) !== true) {
                                     is_valid = false;
                                 }
 

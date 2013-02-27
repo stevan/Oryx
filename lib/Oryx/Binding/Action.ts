@@ -7,14 +7,14 @@ module Oryx {
             public target        : IActionTarget;
             public target_action : string;
             public element_event : ( e : JQueryEventObject ) => void;
-            public validator     : ( x : Object ) => bool;
+            public validator     : ( x : Object ) => any;
 
             constructor ( opts : {
                 element        : JQuery;
                 event_type     : string;
                 target?        : Object;
                 target_action? : string;
-                validator?     : ( x : Object ) => bool;
+                validator?     : ( x : Object ) => any;
             } ) {
                 this.element       = opts.element;
                 this.event_type    = opts.event_type;
@@ -65,7 +65,7 @@ module Oryx {
 
             call_target_action ( e : JQueryEventObject ): void {
                 if ( this.validator ) {
-                    if (!this.validator( this.target )) {
+                    if (this.validator( this.target ) !== true) {
                         return;
                     }
                 }
