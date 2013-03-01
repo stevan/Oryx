@@ -57,9 +57,14 @@ module Oryx {
         export class Select extends Oryx.Binding.Outlet {
             get_element_value (): string { return this.$element().val() }
             set_element_value ( value: string ): void {
-                if ( value != undefined ) {
-                    this.$element().val(value);
-                }
+                this.$element().children('option').each(function(i) {
+                    if ( value == $(this).val() ) {
+                        $(this).parent().val(value);
+                        return false;
+                    } else {
+                        console.warn('This is not the option you\'re looking for.');
+                    }
+                });
             }
         }
     }
