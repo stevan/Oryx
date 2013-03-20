@@ -13,7 +13,6 @@
 /// <reference path="../lib/Oryx/Binding/Outlet.ts" />
 
 /// <reference path="../lib/Oryx/Model.ts" />
-/// <reference path="../lib/Oryx/Model/Serializer/Json.ts" />
 /// <reference path="../lib/Oryx/Model/Resource.ts" />
 /// <reference path="../lib/Oryx/Model/Collection.ts" />
 
